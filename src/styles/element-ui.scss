@@ -1,0 +1,62 @@
+
+
+//覆盖el-pagination默认样式
+.default-pagination{
+  .el-pager {
+     font-size: 11px;
+     li {
+         min-width: 15px;
+//       width: 15px;
+         height: 15px;
+         line-height: 15px;
+         margin: 0 4px;       
+         //默认值
+         border-right: medium;
+         border-color: rgba(0,0,0,0);
+         border-radius: 2px;
+         background-color: rgba(0, 0, 0, 0);
+         &.active {
+             background-color: #5677fc;
+             color: white;
+         }
+         &:last-child{
+             border: none;
+         }
+     }
+}  
+}
+ 
+
+ //覆盖一些element-ui样式
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.cell {
+  .el-tag {
+    margin-right: 8px;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+    .el-tag {
+      margin-right: 0px;
+    }
+  }
+}

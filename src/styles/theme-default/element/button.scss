@@ -1,0 +1,15 @@
+//@import '../../_variables.scss';
+
+$background: #5677fc;
+$borderRadius: 4px;
+$width: 240px;
+$height: 59px;
+
+$hoverBackgroundColor: #a9baff;
+$hoverBoxShadow: $boxShadow;
+$hoverColor: $hoveredTextColor;
+
+$focusBackgroundColor: #a9baff;
+$focusBoxShadow: $boxShadow;
+
+$disabledBackgroundColor: #888888;
