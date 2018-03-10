@@ -23,7 +23,6 @@
     "store": "^2.0.12",
     "vue": "^2.5.13",
     "vue-loader": "^13.6.1",
-    "vue-quill-editor": "^3.0.4",
     "vue-router": "^3.0.1",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.13",
