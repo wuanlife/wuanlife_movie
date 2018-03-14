@@ -18,17 +18,17 @@
       </header>
       <div class="index-tabcontent" v-loading="loading">
         <ul v-if="posts.length > 0" class="index-cards">
-            <post-card v-for="post of posts"
+            <!-- <post-card v-for="post of posts"
                        :key="`post-${post.id}`"
                        :post.sync="post">
-            </post-card>
+            </post-card> -->
         </ul>
         <!--<el-pagination layout="prev, pager, next, jumper"
                          :page-count="pagination.pageCount"
                          @current-change="loadPosts">
           </el-pagination>-->
       </div>
-      <pagination @current-change="loadPosts" :pagination.sync="pagination"></pagination>
+      <!-- <pagination @current-change="loadPosts" :pagination.sync="pagination"></pagination> -->
     </section>
   </div>
 </template>
@@ -38,14 +38,10 @@
 import { getArticles } from 'api/post'
 import { getActiveUsers } from 'api/user'
 // import { getGroups } from 'api/group';
-import PostCard from 'components/PostCard'
-import Pagination from 'components/Pagination'
 import AsideCard from './AsideCard'
 export default {
   name: 'index-visitor',
   components: {
-    PostCard,
-    Pagination,
     AsideCard
   },
   data () {
