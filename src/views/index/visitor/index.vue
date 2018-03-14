@@ -5,30 +5,21 @@
         活跃用户
       </header>
       <div class="aside-content wl-card" v-loading="loadingAside">
-        <aside-card v-for="activeUser of activeUsers"
-          :key="`activeUser-${activeUser.id}`"
-          :activeUser="activeUser"
-          >
-        </aside-card>
       </div>
     </aside>
     <section>
       <header class="wl-card">
         最新话题
       </header>
+      <movie-detail></movie-detail>
       <div class="index-tabcontent" v-loading="loading">
         <ul v-if="posts.length > 0" class="index-cards">
-            <post-card v-for="post of posts"
-                       :key="`post-${post.id}`"
-                       :post.sync="post">
-            </post-card>
         </ul>
         <!--<el-pagination layout="prev, pager, next, jumper"
                          :page-count="pagination.pageCount"
                          @current-change="loadPosts">
           </el-pagination>-->
       </div>
-      <pagination @current-change="loadPosts" :pagination.sync="pagination"></pagination>
     </section>
   </div>
 </template>
@@ -37,16 +28,16 @@
 // import { mapGetters } from 'vuex';
 import { getArticles } from 'api/post'
 import { getActiveUsers } from 'api/user'
+import MovieDetail from 'components/Movie-detail'
 // import { getGroups } from 'api/group';
-import PostCard from 'components/PostCard'
-import Pagination from 'components/Pagination'
+// import PostCard from 'components/PostCard'
+// import Pagination from 'components/Pagination'
 import AsideCard from './AsideCard'
 export default {
   name: 'index-visitor',
   components: {
-    PostCard,
-    Pagination,
-    AsideCard
+    AsideCard,
+    MovieDetail
   },
   data () {
     return {

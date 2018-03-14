@@ -4,50 +4,8 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    max-width: 1280px;
+    max-width: 1014px;
     @media screen and (max-width: 1100px) {
         justify-content: center;
-    }
-    & > section {
-        min-width: 0;
-        flex: 0 0 518px;
-        margin: 0 auto;
-    }
-    & > aside {
-        margin-left: 46px;
-        order: 2;
-        + section {
-            flex: 0 0 447px;
-            order: 1;
-            margin: initial;
-        }
-        flex: 0 0 263px;
-        @media screen and (max-width: 1100px) {
-            display: none;
-        }
-        header {
-            h2 {
-                margin: 20px 0;
-                font-weight: normal;
-                font-size: 14px;
-                color: #5677fc;
-            }
-        }
-        .aside-content {
-            .index-aside-card {
-                width: 250px;
-                height: 70px;
-            }
-        }
-        footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 20px;
-            span {
-                font-size: 14px;
-                color: #5992e4;
-            }
-        }
     }
 }

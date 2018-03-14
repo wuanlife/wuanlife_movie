@@ -3,7 +3,7 @@
     <div class="search-container">
         <el-input
             class="search"
-            placeholder="过你想过的生活..."
+            placeholder="搜索电影、剧集、综艺"
             icon="search"
             v-model="searchContent"
             @keyup.enter.native="handleGoSearch">
@@ -42,19 +42,21 @@ export default {
     flex: 0.8;
   }
   .search /deep/ input {
-    height: 37px;
-    padding: 10px 20px;
+    height: 40px;
+    padding: 13px 20px 12px 19px;
     font-size: 14px;
-    color: #a9baff;
+    color: #fcced2;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 0;
     &::placeholder {
-      color: #a9baff;
+      color: #fcced2;
     }
   }
   #icon-search {
     cursor: pointer;
     margin-right: 20px;
     font-size: 18px;
-    color: #a9baff;
+    color: #fcced2;
   }
 }
 </style>
