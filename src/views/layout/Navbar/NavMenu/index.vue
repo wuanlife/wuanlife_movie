@@ -1,41 +1,5 @@
 <template>
 <div class="nav-menu">
-  <div class="user-container" v-if="user.id">
-    <div class="write-container" @click="goPath('/editor/drafts/new')">
-      <icon-svg icon-class="write"></icon-svg>
-      写文章
-    </div>
-    <el-dropdown menu-align="start"
-      class="avatar-container"
-      trigger="click"
-      @visible-change="visibleChange">
-      <div class="avatar-wrapper" :class="{'active' : isShowDrop}">
-          <span>{{ user.name }}</span>
-      </div>
-      <el-dropdown-menu class="user-dropdown" slot="dropdown">
-          <el-dropdown-item @click.native="goPath('/mySpace')">
-              我的空间
-          </el-dropdown-item>
-          <el-dropdown-item @click.native="goPath('/personalData')">
-              个人资料
-          </el-dropdown-item>
-          <el-dropdown-item @click.native="goPath('/changepsw')">
-              密码修改
-          </el-dropdown-item>
-          <el-dropdown-item @click.native="goPath('/collection')">
-              我的收藏
-          </el-dropdown-item>
-          <el-dropdown-item @click.native="logout">
-              退出登录
-          </el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
-  </div>
-  <!-- login bar (if not logined) -->
-  <div v-else class="login-container">
-    <span><router-link to="/login/">登录</router-link></span>
-    <span><router-link to="/signup/">注册</router-link></span>
-  </div>
 </div>
 </template>
 

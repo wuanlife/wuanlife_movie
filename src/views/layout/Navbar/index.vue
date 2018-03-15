@@ -1,27 +1,27 @@
 <template>
-  <el-menu class="navbar" mode="horizontal">
-    <div class="navbar-container">
-      <!-- Logo bar -->
-      <div class="logo" @click="$router.push({path: '/'})">
-        午安空间
-      </div>
-      <!-- Search bar -->
+  <div class="navbar">
+    <div class="navbar-header">
+      <div class="logo" @click="$router.push({path: '/'})">午安影视</div>
       <search-bar></search-bar>
-      <!-- avatar bar -->
-      <nav-menu></nav-menu>
+      <nav-user></nav-user>
     </div>
-  </el-menu>
+    <div class="navber-menu"></div>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import SearchBar from './SearchBar'
-import NavMenu from './NavMenu'
+import NavUser from './NavUser'
+// import NavMenu from './NavMenu'
+// import NavList from './NavList'
 
 export default {
   components: {
     'search-bar': SearchBar,
-    'nav-menu': NavMenu
+    'nav-user': NavUser
+    // 'nav-menu': NavMenu,
+    // 'nav-list': NavList
   },
   data () {
     return {
@@ -59,37 +59,23 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .navbar {
-  line-height: $nav-height;
-  border-radius: 0px !important;
-  background-color: $wl-blue;
-  .navbar-container {
+  height: $nav-height;
+  max-width: 1260px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .navbar-header{
     display: flex;
-    max-width: 1200px;
-    justify-content: space-around;
-    margin: auto;
-    .logo {
-      cursor: pointer;
-      margin-right: 38px;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+      color: #fff;
       font-size: 30px;
-      color: #ffffff;
-      text-align: left;
     }
-    .notif-container {
-      margin-left: auto;
-      margin-right: 22px;
-
-      .notif-icon {
-        display: block;
-        background: transparent;
-        cursor: pointer;
-        color: #ffffff;
-        width: 18px;
-        height: 18px;
-        &:hover {
-          color: #dddddd;
-        }
-      }
-    }
+  }
+  .navber-menu{
+    height: 32px;
   }
 }
 </style>

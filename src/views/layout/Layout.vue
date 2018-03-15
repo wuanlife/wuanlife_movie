@@ -31,6 +31,10 @@ export default {
   min-width: 750px;
   .navbar-wrapper {
     z-index: 100;
+    background-color: #f32941;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .main-container {
     background-color: #f8f9fa;
