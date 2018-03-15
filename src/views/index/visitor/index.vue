@@ -1,17 +1,6 @@
 <template>
   <div class="index-visitor-container" ref="root">
-    <aside>
-      <header class="wl-card">
-        活跃用户
-      </header>
-      <div class="aside-content wl-card" v-loading="loadingAside">
-      </div>
-    </aside>
     <section>
-      <header class="wl-card">
-        最新话题
-      </header>
-      <movie-detail></movie-detail>
       <div class="index-tabcontent" v-loading="loading">
         <ul v-if="posts.length > 0" class="index-cards">
         </ul>
@@ -28,7 +17,6 @@
 // import { mapGetters } from 'vuex';
 import { getArticles } from 'api/post'
 import { getActiveUsers } from 'api/user'
-import MovieDetail from 'components/Movie-detail'
 // import { getGroups } from 'api/group';
 // import PostCard from 'components/PostCard'
 // import Pagination from 'components/Pagination'
@@ -36,8 +24,7 @@ import AsideCard from './AsideCard'
 export default {
   name: 'index-visitor',
   components: {
-    AsideCard,
-    MovieDetail
+    AsideCard
   },
   data () {
     return {

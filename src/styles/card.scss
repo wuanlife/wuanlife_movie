@@ -1,6 +1,4 @@
 .card-default{
-  width: 300px;
-  height: 200px;
   padding: 40px 0 32px 0;
   box-shadow: 0 0 4px 5px rgb(245, 243, 243);
   background-color: #fff;
@@ -9,6 +7,8 @@
     color: #333;
     border-left: 4px solid #f32941;
     padding-left: 20px;
+    font-weight: bold;
+    @include text-ellipsis();
   }
   > div {
     padding: 29px 40px 0 40px;
