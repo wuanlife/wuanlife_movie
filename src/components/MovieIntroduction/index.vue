@@ -25,7 +25,7 @@ export default {
   >div{
     font-size: 14px;
     color: #444;
-    text-indent: 28px;
+    text-indent: 2em;
     line-height: 25px;
     text-align: justify;
   }
