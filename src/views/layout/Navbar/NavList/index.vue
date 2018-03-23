@@ -21,6 +21,27 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .nav-list{
-    > ul{}
+    display: flex;
+    flex: 1;
+    > ul{
+      font-size: 22px;
+      color: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: stretch;
+      flex: 1;
+      padding: 0 80px;
+      li{
+        display: block;
+        align-self: center;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        &:hover, &:focus{
+          border-bottom: 4px solid #fbe592;
+          color: #fbe592;
+        }
+      }
+    }
   }
 </style>

@@ -5,7 +5,9 @@
       <search-bar></search-bar>
       <nav-user></nav-user>
     </div>
-    <div class="navber-menu"></div>
+    <div class="navber-menu">
+      <nav-list></nav-list>
+    </div>
   </div>
 </template>
 
@@ -14,14 +16,14 @@ import { mapGetters } from 'vuex'
 import SearchBar from './SearchBar'
 import NavUser from './NavUser'
 // import NavMenu from './NavMenu'
-// import NavList from './NavList'
+import NavList from './NavList'
 
 export default {
   components: {
     'search-bar': SearchBar,
-    'nav-user': NavUser
+    'nav-user': NavUser,
     // 'nav-menu': NavMenu,
-    // 'nav-list': NavList
+    'nav-list': NavList
   },
   data () {
     return {
@@ -68,14 +70,18 @@ export default {
     display: flex;
     flex: 1;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
+    height: 55px;
     .logo{
       color: #fff;
       font-size: 30px;
+      display: flex;
+      align-items: center;
     }
   }
   .navber-menu{
-    height: 32px;
+    height: 41px;
+    display: flex;
   }
 }
 </style>

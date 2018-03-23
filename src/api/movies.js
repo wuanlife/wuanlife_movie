@@ -1,9 +1,16 @@
 import fetch from 'utils/fetch'
 import store from 'vuex-store'
 
-export function getArticle (id) {
+export function getMovie (id) {
   return fetch({
-    url: `/articles/${id}`,
+    url: `/movies/${id}`,
+    method: 'get'
+  })
+}
+
+export function getMovieResources (id) {
+  return fetch({
+    url: `/movies/${id}/resources`,
     method: 'get'
   })
 }

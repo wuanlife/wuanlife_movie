@@ -4,10 +4,9 @@
         <el-input
             class="search"
             placeholder="搜索电影、剧集、综艺"
-            icon="search"
             v-model="searchContent"
             @keyup.enter.native="handleGoSearch">
-            <icon-svg @click.native="handleGoSearch" slot="suffix" id="icon-search" icon-class="search" class="el-input__icon"></icon-svg>
+            <icon-svg @click.native="handleGoSearch" slot="suffix" id="icon-search" icon-class="search" class="el-input__icon el-icon-search"></icon-svg>
         </el-input>
     </div>
 </template>
@@ -38,6 +37,8 @@ export default {
 .search-container {
   flex: 0 0 600px;
   min-width: 300px;
+  display: flex;
+  align-items: center;
   @media screen and (max-width: 1000px) {
     flex: 0.8;
   }
@@ -57,6 +58,7 @@ export default {
     margin-right: 20px;
     font-size: 18px;
     color: #fcced2;
+    margin-top: 10px;
   }
 }
 </style>

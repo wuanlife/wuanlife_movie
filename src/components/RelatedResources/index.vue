@@ -4,12 +4,12 @@
     <div>
       <router-link to="" class="share">+分享资源</router-link>
       <ul>
-        <li v-for="(item, index) in data" :key="index">
-          <header :title="item.title">{{ item.title }}</header>
-          <p>{{ item.explanation }}</p>
+        <li v-for="item in resources" :key="item.id">
+          <header :title="item.title"><a :href="item.url">{{ item.title }}</a></header>
+          <p>说明：{{ item.instruction }}</p>
           <footer>
-            <span>分享者：{{ item.share_user }}</span>
-            <time>{{ item.time }}</time>
+            <span>分享者：{{ item.sharer.name }}</span>
+            <time>{{ item.create_at }}</time>
             <div>
               <span>编辑</span>
               <span>删除</span>
@@ -24,30 +24,14 @@
 <script>
 export default {
   name: 'RelatedResources',
-  //   props: ['data'],
-  data () {
-    return {
-      data: [
-        {
-          title: '【电驴】肖申克的救赎说明：中英双语字幕，人人字幕组出品。说明：中英双语字幕，人人字幕组出品。',
-          time: '2014-32-45',
-          explanation: '说明：中英双语字幕，人人字幕组出品。',
-          share_user: 'haha'
-        },
-        {
-          title: '【电驴】肖申克的救赎',
-          time: '2014-32-45',
-          explanation: '说明：中英双语字幕，人人字幕组出品。',
-          share_user: 'haha'
-        },
-        {
-          title: '【电驴】肖申克的救赎',
-          time: '2014-32-45',
-          explanation: '说明：中英双语字幕，人人字幕组出品。',
-          share_user: 'haha'
-        }
-      ]
+  props: {
+    resources: {
+      type: Array,
+      required: true
     }
+  },
+  data () {
+    return {}
   }
 }
 </script>

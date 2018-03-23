@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const Layout = resolve => require.ensure([], () => resolve(require('../views/layout/Layout')), 'Layout')
 const Index = resolve => require.ensure([], () => resolve(require('../views/index/index')), 'Index')
+const Movie = resolve => require.ensure([], () => resolve(require('../views/movie/index')), 'Movie')
 
 /* error page */
 const Err404 = resolve => require.ensure([], () => resolve(require('../views/error/404')), 'Err404')
@@ -25,12 +26,23 @@ export const constantRouterMap = [
   {
     path: '/',
     component: Layout,
-    name: '首页',
     hidden: true,
     children: [{
       path: '/',
       component: Index,
       meta: { title: '午安网 - 过你想过的生活' }
+    }]
+  },
+  {
+    path: '/movie',
+    component: Layout,
+    children: [{
+      path: '',
+      component: Movie,
+      meta: { title: '电影 - 午安影视' }
+    }, {
+      path: ':id',
+      component: Movie
     }]
   },
   {
