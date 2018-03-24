@@ -3,6 +3,7 @@
     <div class="left">
       <movie-datail
         :result="result"
+        v-loading="loading1"
       ></movie-datail>
       <movie-introduction
         class="card"
@@ -11,6 +12,8 @@
       <related-resources
         class="card"
         :resources="resources"
+        :deleteResources="deleteResources"
+        v-loading="loading2"
       ></related-resources>
     </div>
     <div class="right">
@@ -24,7 +27,7 @@ import MovieDatail from 'components/MovieDetail'
 import MovieIntroduction from 'components/MovieIntroduction'
 import Planet from 'components/Planet'
 import RelatedResources from 'components/RelatedResources'
-import { getMovie, getMovieResources } from 'api/movies'
+import { getMovie, getMovieResources, deleteMovieResources } from 'api/movies'
 import { parseTime } from '../../filters'
 
 export default {
@@ -38,30 +41,56 @@ export default {
   data () {
     return {
       result: {},
-      resources: []
+      resources: [],
+      loading1: false,
+      loading2: false
     }
   },
   mounted () {
+    this.loading1 = true
+    this.loading2 = true
     getMovie(1)
       .then(response => this.setFetchMovieData(response))
-      .catch(e => console.log(e))
+      .catch(e => {
+        console.log(e)
+        this.loading1 = false
+      })
     getMovieResources(1)
       .then(response => this.setFetchResourcesData(response))
-      .catch(e => console.log(e))
+      .catch(e => {
+        console.log(e)
+        this.loading2 = false
+      })
   },
   methods: {
     setFetchResourcesData (res) {
-      res.resources.map(item => {
+      const { resources } = res
+      const { id } = this.result
+      resources.map(item => {
         item.create_at = parseTime(item.create_at)
+        item.mid = id
       })
-      this.resources = res.resources
+      this.resources = resources
+      this.loading2 = false
     },
     setFetchMovieData (res) {
-      res.genres = this.arrToString(res.genres)
-      res.directors = this.arrToString(res.directors)
-      res.casts = this.arrToString(res.casts)
-      res.number_douban = this.urlToNumber(res.url_douban)
-      this.result = res
+      const { genres, directors, casts } = res
+      this.result = {
+        ...res,
+        genres: this.arrToString(genres),
+        directors: this.arrToString(directors),
+        casts: this.arrToString(casts),
+        number_douban: this.urlToNumber(res.url_douban)
+      }
+      this.loading1 = false
+    },
+    deleteResources (mid, rid) {
+      const resources = this.resources
+      deleteMovieResources(mid, rid)
+        .then(response => {
+          this.resources = resources.filter(item => item.id !== rid)
+        })
+        .catch(e => console.log(e))
     },
     arrToString (arr) {
       const dataArr = arr.map(item => {

@@ -12,7 +12,9 @@
             <time>{{ item.create_at }}</time>
             <div>
               <span>编辑</span>
-              <span>删除</span>
+              <span
+                @click="deleteResources(item.mid, item.id)"
+              >删除</span>
             </div>
           </footer>
         </li>
@@ -27,6 +29,10 @@ export default {
   props: {
     resources: {
       type: Array,
+      required: true
+    },
+    deleteResources: {
+      type: Function,
       required: true
     }
   },

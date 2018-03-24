@@ -61,6 +61,8 @@ export default function moviesRule(mockAdapter) {
         }
       ]
     })
+    .onDelete('/movies/1/resources/1')
+    .reply(204, {})
     .onPost('/movies')
     .reply(200, {
       id: 410
