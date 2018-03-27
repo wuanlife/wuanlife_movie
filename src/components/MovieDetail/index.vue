@@ -1,21 +1,21 @@
 <template>
   <div class="card-default movie-detail">
-    <header>hahahahha</header>
+    <header>{{ result.title }}</header>
     <div>
       <img src="" alt="">
       <ul class="detail">
-        <li><span>原名：</span>haha</li>
-        <li><span>地区：</span>haha</li>
-        <li><span>年代：</span>haha</li>
-        <li><span>类型：</span>haha</li>
-        <li><span>又名：</span>haha</li>
-        <li><span>导演：</span>haha</li>
-        <li><span>主演：</span>haha</li>
-        <li><span>豆瓣链接：</span><a class="link">hahah</a></li>
+        <li><span>原名：</span>{{ result.original_title }}</li>
+        <li><span>地区：</span>{{ result.countries }}</li>
+        <li><span>年代：</span>{{ result.year }}</li>
+        <li><span>类型：</span>{{ result.genres }}</li>
+        <li><span>又名：</span>{{ result.aka }}</li>
+        <li><span>导演：</span>{{ result.directors }}</li>
+        <li><span>主演：</span>{{ result.casts }}</li>
+        <li><span>豆瓣链接：</span><a :href="result.url_douban" class="link">{{ result.number_douban }}</a></li>
       </ul>
       <div class="score">
         <div class="number">
-          <span>9.6</span>
+          <span>{{ result.rating }}</span>
           <icon-svg icon-class="liuamngxing" class="icon"></icon-svg>
         </div>
         <span>豆瓣评分</span>
@@ -27,7 +27,12 @@
 <script>
 export default {
   name: 'MovieDetail',
-  props: ['movie-detail'],
+  props: {
+    result: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {}
   }
