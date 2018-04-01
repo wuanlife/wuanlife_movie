@@ -52,9 +52,6 @@ export default {
         })
         .catch(e => console.log(e))
     }
-  },
-  data () {
-    return {}
   }
 }
 </script>
