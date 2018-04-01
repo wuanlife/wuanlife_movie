@@ -1,21 +1,21 @@
 <template>
   <div class="card-default movie-detail">
-    <header>{{ result.title }}</header>
+    <header>{{ movieData.title }}</header>
     <div>
       <img src="" alt="">
       <ul class="detail">
-        <li><span>原名：</span>{{ result.original_title }}</li>
-        <li><span>地区：</span>{{ result.countries }}</li>
-        <li><span>年代：</span>{{ result.year }}</li>
-        <li><span>类型：</span>{{ result.genres }}</li>
-        <li><span>又名：</span>{{ result.aka }}</li>
-        <li><span>导演：</span>{{ result.directors }}</li>
-        <li><span>主演：</span>{{ result.casts }}</li>
-        <li><span>豆瓣链接：</span><a :href="result.url_douban" class="link">{{ result.number_douban }}</a></li>
+        <li><span>原名：</span>{{ movieData.original_title }}</li>
+        <li><span>地区：</span>{{ movieData.countries }}</li>
+        <li><span>年代：</span>{{ movieData.year }}</li>
+        <li><span>类型：</span>{{ movieData.genres | arrToString }}</li>
+        <li><span>又名：</span>{{ movieData.aka }}</li>
+        <li><span>导演：</span>{{ movieData.directors | arrToString }}</li>
+        <li><span>主演：</span>{{ movieData.casts | arrToString }}</li>
+        <li><span>豆瓣链接：</span><a :href="movieData.url_douban" class="link">{{ movieData.url_douban | urlToNumber }}</a></li>
       </ul>
       <div class="score">
         <div class="number">
-          <span>{{ result.rating }}</span>
+          <span>{{ movieData.rating }}</span>
           <icon-svg icon-class="liuamngxing" class="icon"></icon-svg>
         </div>
         <span>豆瓣评分</span>
@@ -28,13 +28,29 @@
 export default {
   name: 'MovieDetail',
   props: {
-    result: {
+    movieData: {
       type: Object,
       required: true
     }
   },
   data () {
     return {}
+  },
+  filters: {
+    arrToString (value) {
+      const dataArr = value.map(item => {
+        let a = []
+        for (let key in item) {
+          a.push(item[key])
+        }
+        return a.join('')
+      })
+      return dataArr.join('/')
+    },
+    urlToNumber (value) {
+      let a = value.split('/')
+      return a[a.length - 2]
+    }
   }
 }
 </script>
