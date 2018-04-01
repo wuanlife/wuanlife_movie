@@ -4,7 +4,7 @@
     <div>
       <router-link to="" class="share">+分享资源</router-link>
       <ul>
-        <li v-for="item in resources" :key="item.id">
+        <li v-for="item in data" :key="item.id">
           <header :title="item.title"><a :href="item.url">{{ item.title }}</a></header>
           <p>说明：{{ item.instruction }}</p>
           <footer>
@@ -24,16 +24,33 @@
 </template>
 
 <script>
+import { deleteMovieResources } from 'api/movies'
+
 export default {
   name: 'RelatedResources',
   props: {
     resources: {
       type: Array,
       required: true
-    },
-    deleteResources: {
-      type: Function,
-      required: true
+    }
+  },
+  data () {
+    return {
+      data: []
+    }
+  },
+  watch: {
+    resources: function () {
+      this.data = this.resources
+    }
+  },
+  methods: {
+    deleteResources (mid, rid) {
+      deleteMovieResources(mid, rid)
+        .then(response => {
+          this.data = this.data.filter(item => item.id !== rid)
+        })
+        .catch(e => console.log(e))
     }
   },
   data () {

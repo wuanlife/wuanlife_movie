@@ -2,7 +2,7 @@
   <div class="movie-introduction card-default">
     <header>剧情简介</header>
     <div>
-      {{ result.summary }}
+      {{ movieData.summary }}
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 export default {
   name: 'MovieIntroduction',
   props: {
-    result: {
+    movieData: {
       type: Object,
       required: true
     }

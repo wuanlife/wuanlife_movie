@@ -1,22 +1,21 @@
 <template>
   <div class="view-container movie">
-    <div class="left">
+    <div class="main">
       <movie-datail
-        :result="result"
-        v-loading="loading1"
+        :movieData="movieData"
+        v-loading="movieDetailLoading"
       ></movie-datail>
       <movie-introduction
         class="card"
-        :result="result"
+        :movieData="movieData"
       ></movie-introduction>
       <related-resources
         class="card"
         :resources="resources"
-        :deleteResources="deleteResources"
-        v-loading="loading2"
+        v-loading="resourcesLoading"
       ></related-resources>
     </div>
-    <div class="right">
+    <div class="aside">
       <planet></planet>
     </div>
   </div>
@@ -27,7 +26,7 @@ import MovieDatail from 'components/MovieDetail'
 import MovieIntroduction from 'components/MovieIntroduction'
 import Planet from 'components/Planet'
 import RelatedResources from 'components/RelatedResources'
-import { getMovie, getMovieResources, deleteMovieResources } from 'api/movies'
+import { getMovie, getMovieResources } from 'api/movies'
 import { parseTime } from '../../filters'
 
 export default {
@@ -40,71 +39,42 @@ export default {
   },
   data () {
     return {
-      result: {},
+      movieData: {},
       resources: [],
-      loading1: false,
-      loading2: false
+      movieDetailLoading: false,
+      resourcesLoading: false
     }
   },
   mounted () {
-    this.loading1 = true
-    this.loading2 = true
+    this.movieDetailLoading = true
+    this.resourcesLoading = true
     getMovie(1)
       .then(response => this.setFetchMovieData(response))
       .catch(e => {
         console.log(e)
-        this.loading1 = false
+        this.movieDetailLoading = false
       })
     getMovieResources(1)
       .then(response => this.setFetchResourcesData(response))
       .catch(e => {
         console.log(e)
-        this.loading2 = false
+        this.resourcesLoading = false
       })
   },
   methods: {
     setFetchResourcesData (res) {
       const { resources } = res
-      const { id } = this.result
+      const { id } = this.movieData
       resources.map(item => {
         item.create_at = parseTime(item.create_at)
         item.mid = id
       })
       this.resources = resources
-      this.loading2 = false
+      this.resourcesLoading = false
     },
     setFetchMovieData (res) {
-      const { genres, directors, casts } = res
-      this.result = {
-        ...res,
-        genres: this.arrToString(genres),
-        directors: this.arrToString(directors),
-        casts: this.arrToString(casts),
-        number_douban: this.urlToNumber(res.url_douban)
-      }
-      this.loading1 = false
-    },
-    deleteResources (mid, rid) {
-      const resources = this.resources
-      deleteMovieResources(mid, rid)
-        .then(response => {
-          this.resources = resources.filter(item => item.id !== rid)
-        })
-        .catch(e => console.log(e))
-    },
-    arrToString (arr) {
-      const dataArr = arr.map(item => {
-        let a = []
-        for (let key in item) {
-          a.push(item[key])
-        }
-        return a.join('')
-      })
-      return dataArr.join('/')
-    },
-    urlToNumber (url) {
-      let a = url.split('/')
-      return a[a.length - 2]
+      this.movieData = res
+      this.movieDetailLoading = false
     }
   }
 }
@@ -115,7 +85,7 @@ export default {
   padding-top: 70px;
   padding-bottom: 30px;
 }
-.right{
+.aside{
   margin-left: 58px;
 }
 .card{
