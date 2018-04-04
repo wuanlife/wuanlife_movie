@@ -63,6 +63,20 @@ export default function moviesRule(mockAdapter) {
     })
     .onDelete('/movies/1/resources/1')
     .reply(204, {})
+    .onPost('/movies/1/resources')
+    .reply(200, {
+      id:1,
+      type:"电驴",
+      title:"肖申克的救赎.双语字幕.HR-HDTV.AC3.1024X576.X264-人人影视制作.mkv",
+      instruction:"中英双语字幕，人人字幕组出品",
+      url:"http://example.com",
+      create_at:"2017-07-20T12:50:30.176Z",
+      sharer:
+      {
+        id:1,
+        name:"资源小王子"
+      }
+    })
     .onPost('/movies')
     .reply(200, {
       id: 410
