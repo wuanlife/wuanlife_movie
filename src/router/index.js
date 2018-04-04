@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const Layout = resolve => require.ensure([], () => resolve(require('../views/layout/Layout')), 'Layout')
 const Index = resolve => require.ensure([], () => resolve(require('../views/index/index')), 'Index')
 const Movie = resolve => require.ensure([], () => resolve(require('../views/movie/index')), 'Movie')
+const Share = resolve => require.ensure([], () => resolve(require('../views/share/index')), 'Share')
 
 /* error page */
 const Err404 = resolve => require.ensure([], () => resolve(require('../views/error/404')), 'Err404')
@@ -43,6 +44,15 @@ export const constantRouterMap = [
     }, {
       path: ':id',
       component: Movie
+    }]
+  },
+  {
+    path: '/share',
+    component: Layout,
+    children: [{
+      path: ':id',
+      component: Share,
+      meta: { title: '分享 - 午安影视' }
     }]
   },
   {

@@ -25,6 +25,18 @@ export function deleteMovieResources (mid, rid) {
   })
 }
 
+// 添加资源
+export function addMovieResources (id, params) {
+  const data = {
+    ...params
+  }
+  return fetch({
+    url: `/movies/${id}/resources`,
+    method: 'post',
+    data
+  })
+}
+
 // 新增文章
 export function postArticles (params) {
   const data = {

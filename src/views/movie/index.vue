@@ -13,6 +13,7 @@
         class="card"
         :resources="resources"
         v-loading="resourcesLoading"
+        :movieId="movieId"
       ></related-resources>
     </div>
     <div class="aside">
@@ -42,7 +43,8 @@ export default {
       movieData: {},
       resources: [],
       movieDetailLoading: false,
-      resourcesLoading: false
+      resourcesLoading: false,
+      movieId: 1
     }
   },
   mounted () {
