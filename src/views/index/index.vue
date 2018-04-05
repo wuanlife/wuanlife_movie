@@ -1,10 +1,15 @@
 <template>
-  <div class="index-container">
+  <div class="index-container view-container">
     <section>
-      <ribbon-card title="keke">
-        <div>
-          wanse
-        </div>
+      <ribbon-card title="最新影视">
+        <movie-brief-list :movies="movies"></movie-brief-list>
+        <el-pagination
+          :style="{textAlign: 'center'}"
+          background
+          layout="prev, pager, next"
+          :page-size="10"
+          :total="1000">
+        </el-pagination>
       </ribbon-card>
     </section>
   </div>
@@ -15,7 +20,9 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'index',
   data () {
-    return {}
+    return {
+      movies: [{}, {}]
+    }
   },
   computed: {
     ...mapGetters(['user'])
@@ -23,3 +30,12 @@ export default {
   created () {}
 }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+.index-container {
+  margin-top: 70px;
+  section {
+    width: 745px;
+  }
+}
+</style>

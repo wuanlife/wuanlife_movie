@@ -34,7 +34,7 @@ export default {
   }
   &-header {
     position: relative;
-    margin: 36px 0;
+    margin-top: 36px;
     padding: 0 29px;
     font-size: 18px;
     font-weight: 500;
