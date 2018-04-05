@@ -33,13 +33,27 @@ export default {
       padding: 0 80px;
       li{
         display: block;
+        position: relative;
         align-self: center;
         height: 100%;
         display: flex;
         align-items: center;
+        &::after {
+          content: '';
+          transition: all 0.5s ease-in-out;
+          transform: scaleX(0);
+          position: absolute;
+          width: 100%;
+          height: 4px;
+          bottom: 0;
+          left: 0;
+          background: #fbe592;
+        }
         &:hover, &:focus{
-          border-bottom: 4px solid #fbe592;
           color: #fbe592;
+          &::after {
+            transform: scaleX(1);
+          }
         }
       }
     }
