@@ -56,6 +56,7 @@ li.movie-brief-item {
     }
   }
   .brief {
+    flex: 1;
     header {
       margin-bottom: 12px;
       h1 {
