@@ -95,4 +95,32 @@ export default function moviesRule (mockAdapter) {
     .reply(200, {
       id: 410
     })
+    .onGet('/movies?type=&limit=20&offset=0')
+    .reply(200, {
+      'movies':
+      [
+        {
+          'id': 1,
+          'title': '肖申克的救赎',
+          'digest': '20世纪40年代末，小有成就的青年银行家安迪...',
+          'poster': 'http://example.jpg',
+          'rating': '9.8'
+        },
+        {
+          'id': 2,
+          'title': '肖申克的救赎',
+          'digest': '20世纪40年代末，小有成就的青年银行家安迪...',
+          'poster': 'http://example.jpg',
+          'rating': '9.8'
+        },
+        {
+          'id': 3,
+          'title': '肖申克的救赎',
+          'digest': '20世纪40年代末，小有成就的青年银行家安迪...',
+          'poster': 'http://example.jpg',
+          'rating': '9.8'
+        }
+      ],
+      'total': 256
+    })
 }

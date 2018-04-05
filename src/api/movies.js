@@ -16,6 +16,13 @@ export function getMovie (id) {
   })
 }
 
+export function getMovies ({type = '', limit = 20, offset = 0}) {
+  return fetch({
+    url: `/movies?type=${type}&limit=${limit}&offset=${offset}`,
+    method: 'get'
+  })
+}
+
 // 获取电影资源列表
 export function getMovieResources (id) {
   return fetch({

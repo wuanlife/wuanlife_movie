@@ -7,8 +7,8 @@
           :style="{textAlign: 'center'}"
           background
           layout="prev, pager, next"
-          :page-size="10"
-          :total="1000">
+          :page-size="20"
+          :total="total">
         </el-pagination>
       </ribbon-card>
     </section>
@@ -17,12 +17,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { getMovies } from 'api/movies'
 export default {
   name: 'index',
   data () {
     return {
       title: '影视',
-      movies: [{}, {}]
+      movies: [{}, {}],
+      total: null
     }
   },
   computed: {
@@ -33,6 +35,10 @@ export default {
     if (typeId) {
       this.title = this.types.find(type => type.type_id === typeId).type_name
     }
+    getMovies({type: typeId || ''}).then(({total, movies}) => {
+      this.total = total
+      this.movies = movies
+    })
   }
 }
 </script>

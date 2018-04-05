@@ -1,14 +1,14 @@
 <template>
   <li class="movie-brief-item">
     <div class="cover">
-      <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2505925363.webp" />
+      <img :src="movie.poster" />
     </div>
     <div class="brief">
       <header>
-        <h1>【电影】肖申克的救赎（1994）</h1>
-        <span>豆瓣得分：<strong class="score">9.6</strong></span>
+        <h1>【电影】{{movie.title}}</h1>
+        <span>豆瓣得分：<strong class="score">{{movie.rating}}</strong></span>
       </header>
-      <p class="intro">20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla20世纪blabla</p>
+      <p class="intro">{{movie.digest}}</p>
     </div>
   </li>
 </template>
@@ -16,11 +16,15 @@
 <script >
 export default {
   props: {
-    movies: Array
+    movie: Object,
+    required: true
   },
   data () {
     return {
     }
+  },
+  mounted () {
+    console.log(this.movie)
   },
   methods: {
   }
