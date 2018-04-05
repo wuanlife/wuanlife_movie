@@ -73,6 +73,7 @@ export default {
     align-items: stretch;
     height: 55px;
     .logo{
+      cursor: pointer;
       color: #fff;
       font-size: 30px;
       display: flex;

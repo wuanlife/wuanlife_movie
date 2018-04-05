@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Layout = resolve => require.ensure([], () => resolve(require('../views/layout/Layout')), 'Layout')
-const Index = resolve => require.ensure([], () => resolve(require('../views/index/index')), 'Index')
+const Movies = resolve => require.ensure([], () => resolve(require('../views/movies/index')), 'Movies')
 const Movie = resolve => require.ensure([], () => resolve(require('../views/movie/index')), 'Movie')
 const Share = resolve => require.ensure([], () => resolve(require('../views/share/index')), 'Share')
 
@@ -28,9 +28,14 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     hidden: true,
+    redirect: '/timeline',
     children: [{
-      path: '/',
-      component: Index,
+      path: '/timeline/:typeId',
+      component: Movies,
+      meta: { title: '午安网 - 过你想过的生活' }
+    }, {
+      path: '/timeline',
+      component: Movies,
       meta: { title: '午安网 - 过你想过的生活' }
     }]
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="index-container view-container">
     <section>
-      <ribbon-card title="最新影视">
+      <ribbon-card :title="`最新${this.title}`">
         <movie-brief-list :movies="movies"></movie-brief-list>
         <el-pagination
           :style="{textAlign: 'center'}"
@@ -21,13 +21,19 @@ export default {
   name: 'index',
   data () {
     return {
+      title: '影视',
       movies: [{}, {}]
     }
   },
   computed: {
-    ...mapGetters(['user'])
+    ...mapGetters(['types'])
   },
-  created () {}
+  mounted () {
+    const typeId = parseInt(this.$route.params.typeId)
+    if (typeId) {
+      this.title = this.types.find(type => type.type_id === typeId).type_name
+    }
+  }
 }
 </script>
 
