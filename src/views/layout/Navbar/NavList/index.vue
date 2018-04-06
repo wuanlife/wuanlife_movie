@@ -1,20 +1,33 @@
 <template>
   <div class="nav-list">
     <ul>
-      <li v-for="(item, index) of list" :key="index">
-        <router-link to="">{{ item }}</router-link>
+      <li v-for="(item, index) of this.types" :key="index">
+        <router-link :to="`/timeline/${item.type_id}`">{{ item.type_name }}</router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'NavList',
   data () {
     return {
-      list: ['首页', '电影', '国产/港台剧', '欧美剧', '日韩剧', '综艺']
     }
+  },
+  computed: {
+    ...mapGetters([
+      'types'
+    ])
+  },
+  mounted () {
+    this.getTypes()
+  },
+  methods: {
+    ...mapActions([
+      'getTypes'
+    ])
   }
 }
 </script>
@@ -33,13 +46,27 @@ export default {
       padding: 0 80px;
       li{
         display: block;
+        position: relative;
         align-self: center;
         height: 100%;
         display: flex;
         align-items: center;
+        &::after {
+          content: '';
+          transition: all 0.5s ease-in-out;
+          transform: scaleX(0);
+          position: absolute;
+          width: 100%;
+          height: 4px;
+          bottom: 0;
+          left: 0;
+          background: #fbe592;
+        }
         &:hover, &:focus{
-          border-bottom: 4px solid #fbe592;
           color: #fbe592;
+          &::after {
+            transform: scaleX(1);
+          }
         }
       }
     }
