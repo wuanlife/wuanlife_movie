@@ -5,7 +5,7 @@
     </div>
     <div class="brief">
       <header>
-        <h1>【电影】{{movie.title}}</h1>
+        <h1 @click="jumpMovie">【电影】{{movie.title}}</h1>
         <span>豆瓣得分：<strong class="score">{{movie.rating}}</strong></span>
       </header>
       <p class="intro">{{movie.digest}}</p>
@@ -27,6 +27,9 @@ export default {
     console.log(this.movie)
   },
   methods: {
+    jumpMovie () {
+      this.$router.push({ path: `/movie/${this.movie.id}` })
+    }
   }
 }
 </script>
