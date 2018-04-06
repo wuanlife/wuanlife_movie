@@ -39,11 +39,7 @@ export default {
   filters: {
     arrToString (value) {
       const dataArr = value.map(item => {
-        let a = []
-        for (let key in item) {
-          a.push(item[key])
-        }
-        return a.join('')
+        return item.name
       })
       return dataArr.join('/')
     },

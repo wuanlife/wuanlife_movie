@@ -50,13 +50,14 @@ export default {
   mounted () {
     this.movieDetailLoading = true
     this.resourcesLoading = true
-    getMovie(1)
+    this.movieId = this.$route.params.id
+    getMovie(this.$route.params.id)
       .then(response => this.setFetchMovieData(response))
       .catch(e => {
         console.log(e)
         this.movieDetailLoading = false
       })
-    getMovieResources(1)
+    getMovieResources(this.$route.params.id)
       .then(response => this.setFetchResourcesData(response))
       .catch(e => {
         console.log(e)

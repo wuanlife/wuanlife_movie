@@ -2,7 +2,7 @@
   <div class="card-default related-resources">
     <header>相关资源</header>
     <div>
-      <router-link to="{ path: `/share/${movieId}` }" class="share">+分享资源</router-link>
+      <router-link :to="{ path: `/share/${movieId}` }" class="share">+分享资源</router-link>
       <ul>
         <li v-for="item in data" :key="item.id">
           <header :title="item.title"><a :href="item.url">{{ item.title }}</a></header>
@@ -34,7 +34,6 @@ export default {
       required: true
     },
     movieId: {
-      type: Number,
       required: true
     }
   },
