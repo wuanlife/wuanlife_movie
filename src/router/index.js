@@ -5,6 +5,7 @@ const Layout = resolve => require.ensure([], () => resolve(require('../views/lay
 const Movies = resolve => require.ensure([], () => resolve(require('../views/movies/index')), 'Movies')
 const Movie = resolve => require.ensure([], () => resolve(require('../views/movie/index')), 'Movie')
 const Share = resolve => require.ensure([], () => resolve(require('../views/share/index')), 'Share')
+const Search = resolve => require.ensure([], () => resolve(require('../views/search/index')), 'Search')
 
 /* error page */
 const Err404 = resolve => require.ensure([], () => resolve(require('../views/error/404')), 'Err404')
@@ -44,11 +45,11 @@ export const constantRouterMap = [
     component: Layout,
     children: [{
       path: '',
-      component: Movie,
-      meta: { title: '电影 - 午安影视' }
+      component: Movie
     }, {
       path: ':id',
-      component: Movie
+      component: Movie,
+      meta: { title: '电影详情 - 午安影视' }
     }]
   },
   {
@@ -57,7 +58,16 @@ export const constantRouterMap = [
     children: [{
       path: ':id',
       component: Share,
-      meta: { title: '分享 - 午安影视' }
+      meta: { title: '分享资源 - 午安影视' }
+    }]
+  },
+  {
+    path: '/',
+    component: Layout,
+    children: [{
+      path: '/search',
+      component: Search,
+      meta: { title: '分享资源 - 午安影视' }
     }]
   },
   {
