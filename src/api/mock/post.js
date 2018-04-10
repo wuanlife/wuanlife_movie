@@ -297,3 +297,16 @@ export default function postRule(mockAdapter) {
     uploadToken: 'VwLnFpbml1LmNvbSBodHRwOlwvXC8xODMuMTMxLjcuMTgiXX0='
   })
 }
+
+export function getSearchMovies (keyword, offset, limit) {
+  const data = {
+    keyword,
+    offset,
+    limit
+  }
+  return fetch({
+    url: `/Movies/search?keyword=${keyword}&offset=${offset}&limit=${limit}`,
+    method: 'post',
+    params: data
+  })
+}

@@ -2,13 +2,9 @@
   <div class="index-container view-container">
     <section>
       <ribbon-card :title="`搜索结果`">
-        <div class="empty-container" v-if="emptyMovies">
-          <h2>没有匹配到任何电影</h2>
-        </div>
-        <div class="relatedMoviewCardBox" v-loading='loading' v-else>
-          <search-movie-list v-for="movie in relatedMovies"
-                            :key="movie.id">
-          </search-movie-list>
+        <div v-loading='loading' >
+          <movie-brief-item :movies="movies">
+          </movie-brief-item>
         </div>
         <el-pagination
           v-if="total > 20"
@@ -24,81 +20,21 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { searchMovies } from '../../api/mock/post'
+import { getSearchMovies } from '../../api/mock/post'
 
 export default {
-  name: 'index-container',
+  name: 'index',
   data () {
     return {
-      relatedPlantesData: [],
-      relatedMovies: [],
-      loading: false,
-      i: 0,
-      emptyMovies: false
+      movies: [],
+      total: null
     }
   },
   mounted () {
-    this.getsearchMovies(1)
-  },
-  computed: {
-    ...mapGetters(['movie'])
-  },
-  methods: {
-    getsearchMovies (offset) {
-      var self = this
-      this.loading1 = true
-      return new Promise((resolve, reject) => {
-        searchMovies(
-          this.$route.query.search,
-          offset - 1 || 0,
-          self.pagination.limit
-        )
-          .then(res => {
-            if (res.articles == null) {
-              self.emptyMovies = true
-            } else {
-              self.emptyMovies = false
-              // 动态确定页码
-              self.pagination.pageCount = Math.ceil(
-                res.total / self.pagination.limit
-              )
-              self.relatedMovies = res.Movies
-            }
-            self.loading1 = false
-            resolve()
-          })
-          .catch(error => {
-            self.loading1 = false
-            reject(error)
-          })
-      })
-    },
-    showMorePlanets () {
-      this.morePlanetsBtn = false
-      this.relatedPlantesData1 = this.relatedPlantesData
-    },
-    loadMore () {
-      let self = this
-      self.i += 1
-      searchMovies(this.$route.query.search, 20 * self.i, 20)
-        .then(res => {
-          self.relatedPostsData = self.relatedPostsData.concat(
-            self.dealTime(res.data)
-          )
-          self.loading1 = false
-        })
-        .catch(error => {
-          console.log(error)
-          self.loading1 = false
-        })
-    }
-  },
-  watch: {
-    'pagination.currentPage': function (val) {
-      // var offset = val - 1
-      // getSearchArticles(offset)
-    }
+    getSearchMovies({type: '2' || '', keyword: this.keyword}).then(({total, movies}) => {
+      this.total = total
+      this.movies = movies
+    })
   }
 }
 </script>
@@ -119,10 +55,5 @@ export default {
   h2 {
     font-size: 20px;
   }
-}
-.relatedMoviewCardBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 </style>
