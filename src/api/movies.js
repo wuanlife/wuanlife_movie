@@ -23,6 +23,19 @@ export function getMovies ({type = '', limit = 20, offset = 0}) {
   })
 }
 
+// 添加资源
+export function setMovie (type, url) {
+  const data = {
+    type,
+    url
+  }
+  return fetch({
+    url: `/movies`,
+    method: 'post',
+    params: data
+  })
+}
+
 // 获取电影资源列表
 export function getMovieResources (id) {
   return fetch({
