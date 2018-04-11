@@ -5,11 +5,7 @@
         <div  class="form-item">
           <span>分类：</span>
           <el-radio-group v-model="type" @change.native="movieTypeChange">
-            <el-radio class="radio" :label="0">电影</el-radio>
-            <el-radio class="radio" :label="1">国产/港台剧</el-radio>
-            <el-radio class="radio" :label="2">欧美剧</el-radio>
-            <el-radio class="radio" :label="3">日韩剧</el-radio>
-            <el-radio class="radio" :label="4">综艺</el-radio>
+            <el-radio class="radio" v-for="movieType in types" :key="movieType.type_id" :label="movieType.type_id">{{movieType.type_name}}</el-radio>
           </el-radio-group>
         </div>
         <div class="form-item">
@@ -32,14 +28,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { setMovie } from 'api/movies'
+import { postMovies } from 'api/movies'
 
 export default {
   name: 'Find',
   data () {
     return {
-      type:'',
-      url:''
+      type: '',
+      url: ''
     }
   },
   computed: {
@@ -53,8 +49,11 @@ export default {
     handleGoSubmit (type, url) {
       // var movieType = this.type
       // var movieURL = this.url
-      setMovie()
+      postMovies()
     }
+  },
+  mounted () {
+    console.log(this)
   }
 }
 </script>
@@ -65,51 +64,50 @@ export default {
   section {
     // width: 745px;
      .form-item{
-                    display: flex;
-                    min-height: 45px;
-                    align-items: center;
-                    font-size: 14px;
-                    color: #444444;
-                    margin-bottom: 0px;
-                    &:last-child{
-                        margin-bottom:0px;
-                    }
-                     span{
-                        display: block;
-                        width:86px;
-                        margin-right: 32px;
-                        text-align:right;
-                        font-size: 14px;
-                        font-weight: bold;
-                        color: #434343;
-                    }
-                    // &>.movieURL{
-                    //     height: 32px;
-                    //     width: 393px;
-                    //     color: #434343;
-                    //     background-color: rgba(209, 209, 209, 0.3);
-                    //     border-radius: 4px;
-                    //     border: solid 2px rgba(209, 209, 209, 0.3);
-                    //     padding: 0 16px;
-                    // }
-                    &>input:focus{
-                        background-color:#fff;
-                    }
-                    &>.submit{
-                        font-size: 14px;
-                        color: #fff;
-                        padding: 9px 32px 9px 33px;
-                        background: #f32941;
-                        border: solid 1px #f32941;
-                        border-radius: 4px;
-                    }
-                    &>p{
-                        font-size: 12px;
-                        color: #444444;
-                        padding-top:35px;
-                    }
-
+      display: flex;
+      min-height: 45px;
+      align-items: center;
+      font-size: 14px;
+      color: #444444;
+      margin-bottom: 0px;
+      &:last-child{
+          margin-bottom:0px;
+      }
+        span{
+          display: block;
+          width:86px;
+          margin-right: 32px;
+          text-align:right;
+          font-size: 14px;
+          font-weight: bold;
+          color: #434343;
+      }
+      // &>.movieURL{
+      //     height: 32px;
+      //     width: 393px;
+      //     color: #434343;
+      //     background-color: rgba(209, 209, 209, 0.3);
+      //     border-radius: 4px;
+      //     border: solid 2px rgba(209, 209, 209, 0.3);
+      //     padding: 0 16px;
+      // }
+      &>input:focus{
+          background-color:#fff;
+      }
+      &>.submit{
+          font-size: 14px;
+          color: #fff;
+          padding: 9px 32px 9px 33px;
+          background: #f32941;
+          border: solid 1px #f32941;
+          border-radius: 4px;
+      }
+      &>p{
+          font-size: 12px;
+          color: #444444;
+          padding-top:35px;
+      }
+    }
   }
-}
 }
 </style>

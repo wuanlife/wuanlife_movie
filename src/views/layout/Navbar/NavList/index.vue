@@ -1,7 +1,7 @@
 <template>
   <div class="nav-list">
     <ul>
-      <li v-for="(item, index) of this.types" :key="index">
+      <li v-for="(item, index) of this.processedTypes" :key="index">
         <router-link :to="`/timeline/${item.type_id}`">{{ item.type_name }}</router-link>
       </li>
     </ul>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   name: 'NavList',
   data () {
@@ -17,12 +17,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'types'
-    ])
+    processedTypes: [{
+      type_id: '',
+      type_name: '首页'
+    }].concat(this.$store.getters.types)
   },
   mounted () {
     this.getTypes()
+    console.log(this)
   },
   methods: {
     ...mapActions([

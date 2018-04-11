@@ -1,7 +1,7 @@
 <template>
   <div class="nav-user">
     <div class="nav-user-logined">
-      <router-link to="" tag="span" class="nav-user-find">发现影视</router-link>
+      <router-link to="/find" tag="span" class="nav-user-find">发现影视</router-link>
       <div>
         <span @click="show()">
           淘淘<icon-svg icon-class="triangle1" class="nav-user-triangle"></icon-svg>

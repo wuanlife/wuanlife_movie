@@ -24,7 +24,7 @@ export function getMovies ({type = '', limit = 20, offset = 0}) {
 }
 
 // 添加资源
-export function setMovie (type, url) {
+export function postMovies (type, url) {
   const data = {
     type,
     url

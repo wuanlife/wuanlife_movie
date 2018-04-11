@@ -2,17 +2,11 @@ import { getTypes as getTypesFromAPI } from 'api/movies'
 
 const movies = {
   state: {
-    types: [{
-      type_id: '',
-      type_name: '首页'
-    }]
+    types: []
   },
   mutations: {
     SET_TYPES: (state, types) => {
-      state.types = [{
-        type_id: '',
-        type_name: '首页'
-      }].concat(types)
+      state.types = types
     },
     CLEAR: state => {
       for (const key in state) {
