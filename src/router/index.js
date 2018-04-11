@@ -5,6 +5,7 @@ const Layout = resolve => require.ensure([], () => resolve(require('../views/lay
 const Movies = resolve => require.ensure([], () => resolve(require('../views/movies/index')), 'Movies')
 const Movie = resolve => require.ensure([], () => resolve(require('../views/movie/index')), 'Movie')
 const Share = resolve => require.ensure([], () => resolve(require('../views/share/index')), 'Share')
+const Search = resolve => require.ensure([], () => resolve(require('../views/search/index')), 'Search')
 const Find = resolve => require.ensure([], () => resolve(require('../views/find/index')), 'Find')
 
 /* error page */
@@ -58,6 +59,15 @@ export const constantRouterMap = [
     children: [{
       path: ':id',
       component: Share,
+      meta: { title: '分享资源 - 午安影视' }
+    }]
+  },
+  {
+    path: '/',
+    component: Layout,
+    children: [{
+      path: '/search',
+      component: Search,
       meta: { title: '分享资源 - 午安影视' }
     }]
   },
