@@ -32,7 +32,16 @@ export function postMovies (type, url) {
   return fetch({
     url: `/movies`,
     method: 'post',
-    params: data
+    data: data
+  })
+}
+
+// 搜索电影
+export function getSearchMovies ({keyword = '', offset = 0, limit = 20}) {
+  return fetch({
+    url: `/movies/search?keyword=${keyword}&offset=${offset}&limit=${limit}`,
+    method: 'get'
+    // params: data
   })
 }
 

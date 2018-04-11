@@ -15,7 +15,7 @@
 
         <div class="form-item">
            <span></span>
-          <el-button class="submit" @click.native="handleGoSubmit">提交</el-button>
+          <el-button class="submit" @click.native="handleSubmit">提交</el-button>
         </div>
         <div class="form-item">
           <p>豆瓣链接即该影视在豆瓣电影的链接，链接格式为：https://movie.douban.com/subject/xxxxxx/ ，豆瓣电影官网：<a href="https://movie.douban.com/" target="_blank">传送门</a></p>
@@ -46,10 +46,12 @@ export default {
       val = this.type
       console.log(val)
     },
-    handleGoSubmit (type, url) {
-      // var movieType = this.type
-      // var movieURL = this.url
-      postMovies()
+    handleSubmit () {
+      const type = this.type
+      const url = this.url
+      postMovies(type, url).then(res => {
+        this.$router.push({ path: `/movie/${res.id}` })
+      })
     }
   },
   mounted () {

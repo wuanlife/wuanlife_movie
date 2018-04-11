@@ -20,18 +20,23 @@
 </template>
 
 <script>
-import { getSearchMovies } from '../../api/mock/post'
+import { getSearchMovies } from 'api/movies'
 
 export default {
   name: 'index',
   data () {
     return {
       movies: [],
-      total: null
+      total: null,
+      pagination: {
+        limit: 20,
+        offset: 0
+      }
     }
   },
   mounted () {
-    getSearchMovies({type: '2' || '', keyword: this.keyword}).then(({total, movies}) => {
+    getSearchMovies({keyword: this.$route.query.search, limit: this.limit, offset: this.offset}).then(({total, movies}) => {
+      debugger
       this.total = total
       this.movies = movies
     })

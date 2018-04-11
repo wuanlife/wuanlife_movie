@@ -4,12 +4,13 @@
       <ribbon-card :title="`最新${this.title}`">
         <movie-brief-list :movies="movies"></movie-brief-list>
         <el-pagination
-          v-if="total > 20"
+          v-if="pagination.total > pagination.limit"
           :style="{textAlign: 'center'}"
           background
           layout="prev, pager, next"
-          :page-size="20"
-          :total="total">
+          :page-size="pagination.limit"
+          @current-change="handlePageChange"
+          :total="pagination.total">
         </el-pagination>
       </ribbon-card>
     </section>
@@ -23,9 +24,13 @@ export default {
   name: 'index',
   data () {
     return {
-      title: '影视',
+      typeId: parseInt(this.$route.params.typeId),
       movies: [],
-      total: null
+      pagination: {
+        limit: 20,
+        offset: 0,
+        total: 0
+      }
     }
   },
   computed: {
@@ -33,13 +38,33 @@ export default {
   },
   mounted () {
     const typeId = parseInt(this.$route.params.typeId)
+    this.getAndSetMovies({type: this.typeId, offset: 0, limit: this.pagination.limit})
     if (typeId) {
-      this.title = this.types.find(type => type.type_id === typeId).type_name
+      const type = this.types.find(type => type.type_id === typeId)
+      this.title = (type && type.type_name) || ''
     }
-    getMovies({type: typeId || ''}).then(({total, movies}) => {
-      this.total = total
-      this.movies = movies
-    })
+  },
+  updated () {
+    const typeId = parseInt(this.$route.params.typeId)
+    if (typeId) {
+      const type = this.types.find(type => type.type_id === typeId)
+      this.title = (type && type.type_name) || ''
+    }
+  },
+  methods: {
+    getAndSetMovies (query) {
+      getMovies(query).then(res => {
+        this.pagination.total = res.total
+        this.movies = res.movies
+      })
+    },
+    handlePageChange (page) {
+      this.getAndSetMovies({
+        type: this.typeId,
+        limit: this.pagination.limit,
+        offset: page - 1
+      })
+    }
   }
 }
 </script>

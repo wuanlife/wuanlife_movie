@@ -15,14 +15,12 @@
 import { mapGetters } from 'vuex'
 import SearchBar from './SearchBar'
 import NavUser from './NavUser'
-// import NavMenu from './NavMenu'
 import NavList from './NavList'
 
 export default {
   components: {
     'search-bar': SearchBar,
     'nav-user': NavUser,
-    // 'nav-menu': NavMenu,
     'nav-list': NavList
   },
   data () {
