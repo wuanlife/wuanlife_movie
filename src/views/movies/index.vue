@@ -4,6 +4,7 @@
       <ribbon-card :title="`最新${this.title}`">
         <movie-brief-list :movies="movies"></movie-brief-list>
         <el-pagination
+          v-if="total > 20"
           :style="{textAlign: 'center'}"
           background
           layout="prev, pager, next"
@@ -23,7 +24,7 @@ export default {
   data () {
     return {
       title: '影视',
-      movies: [{}, {}],
+      movies: [],
       total: null
     }
   },

@@ -6,6 +6,7 @@ const Movies = resolve => require.ensure([], () => resolve(require('../views/mov
 const Movie = resolve => require.ensure([], () => resolve(require('../views/movie/index')), 'Movie')
 const Share = resolve => require.ensure([], () => resolve(require('../views/share/index')), 'Share')
 const Search = resolve => require.ensure([], () => resolve(require('../views/search/index')), 'Search')
+const Find = resolve => require.ensure([], () => resolve(require('../views/find/index')), 'Find')
 
 /* error page */
 const Err404 = resolve => require.ensure([], () => resolve(require('../views/error/404')), 'Err404')
@@ -68,6 +69,15 @@ export const constantRouterMap = [
       path: '/search',
       component: Search,
       meta: { title: '分享资源 - 午安影视' }
+    }]
+  },
+  {
+    path: '/find',
+    component: Layout,
+    children: [{
+      path: '',
+      component: Find,
+      meta: { title: '发现影视 - 午安影视' }
     }]
   },
   {
