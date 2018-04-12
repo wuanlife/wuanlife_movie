@@ -37,11 +37,15 @@ export function postMovies (type, url) {
 }
 
 // 搜索电影
-export function getSearchMovies ({keyword = '', offset = 0, limit = 20}) {
+export function getSearchMovies ({q = '', offset = 0, limit = 20}) {
   return fetch({
-    url: `/movies/search?keyword=${keyword}&offset=${offset}&limit=${limit}`,
-    method: 'get'
-    // params: data
+    url: `/movies/search`,
+    method: 'post',
+    data: {
+      q,
+      offset,
+      limit
+    }
   })
 }
 

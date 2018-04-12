@@ -35,7 +35,7 @@ export default {
     }
   },
   mounted () {
-    getSearchMovies({keyword: this.$route.query.search, limit: this.limit, offset: this.offset}).then(({total, movies}) => {
+    getSearchMovies({q: this.$route.query.search, limit: this.limit, offset: this.offset}).then(({total, movies}) => {
       debugger
       this.total = total
       this.movies = movies
