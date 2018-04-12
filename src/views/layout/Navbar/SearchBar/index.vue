@@ -1,14 +1,14 @@
 <template>
-    <!-- Search bar -->
-    <div class="search-container">
-        <el-input
-            class="search"
-            placeholder="搜索电影、剧集、综艺"
-            v-model="searchContent"
-            @keyup.enter.native="handleGoSearch">
-            <icon-svg @click.native="handleGoSearch" slot="suffix" id="icon-search" icon-class="search" class="el-input__icon el-icon-search"></icon-svg>
-        </el-input>
-    </div>
+  <!-- Search bar -->
+  <div class="search-container">
+    <el-input
+      class="search"
+      placeholder="搜索电影、剧集、综艺"
+      v-model="searchContent"
+      @keyup.enter.native="handleGoSearch">
+        <icon-svg slot="suffix" @click.native="handleGoSearch" id="icon-search" icon-class="search" class="el-input__icon"></icon-svg>
+    </el-input>
+  </div>
 </template>
 
 <script>
@@ -26,7 +26,6 @@ export default {
           query: { search: this.searchContent }
         })
       } else {
-        alert('请输入要搜索的内容')
       }
     }
   }

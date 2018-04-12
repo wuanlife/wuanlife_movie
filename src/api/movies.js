@@ -23,6 +23,32 @@ export function getMovies ({type = '', limit = 20, offset = 0}) {
   })
 }
 
+// 添加资源
+export function postMovies (type, url) {
+  const data = {
+    type,
+    url
+  }
+  return fetch({
+    url: `/movies`,
+    method: 'post',
+    data: data
+  })
+}
+
+// 搜索电影
+export function getSearchMovies ({q = '', offset = 0, limit = 20}) {
+  return fetch({
+    url: `/movies/search`,
+    method: 'post',
+    data: {
+      q,
+      offset,
+      limit
+    }
+  })
+}
+
 // 获取电影资源列表
 export function getMovieResources (id) {
   return fetch({

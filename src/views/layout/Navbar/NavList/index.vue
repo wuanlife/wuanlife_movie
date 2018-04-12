@@ -1,6 +1,9 @@
 <template>
   <div class="nav-list">
     <ul>
+      <li>
+        <router-link :to="`/timeline`">首页</router-link>
+      </li>
       <li v-for="(item, index) of this.types" :key="index">
         <router-link :to="`/timeline/${item.type_id}`">{{ item.type_name }}</router-link>
       </li>
@@ -9,7 +12,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'NavList',
   data () {
@@ -23,6 +26,7 @@ export default {
   },
   mounted () {
     this.getTypes()
+    console.log(this)
   },
   methods: {
     ...mapActions([
