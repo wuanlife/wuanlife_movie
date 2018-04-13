@@ -38,10 +38,12 @@ export default {
   },
   mounted () {
     const typeId = parseInt(this.$route.params.typeId)
-    this.getAndSetMovies({type: this.typeId, offset: 0, limit: this.pagination.limit})
+    this.getAndSetMovies({type: this.typeId || '', offset: 0, limit: this.pagination.limit})
     if (typeId) {
       const type = this.types.find(type => type.type_id === typeId)
       this.title = (type && type.type_name) || ''
+    } else {
+      this.title = '影视'
     }
   },
   updated () {
@@ -49,6 +51,8 @@ export default {
     if (typeId) {
       const type = this.types.find(type => type.type_id === typeId)
       this.title = (type && type.type_name) || ''
+    } else {
+      this.title = '影视'
     }
   },
   methods: {

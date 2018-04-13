@@ -7,6 +7,7 @@ const Movie = resolve => require.ensure([], () => resolve(require('../views/movi
 const Share = resolve => require.ensure([], () => resolve(require('../views/share/index')), 'Share')
 const Search = resolve => require.ensure([], () => resolve(require('../views/search/index')), 'Search')
 const Find = resolve => require.ensure([], () => resolve(require('../views/find/index')), 'Find')
+const Callback = resolve => require.ensure([], () => resolve(require('../views/callback/index')), 'Callback')
 
 /* error page */
 const Err404 = resolve => require.ensure([], () => resolve(require('../views/error/404')), 'Err404')
@@ -52,6 +53,10 @@ export const constantRouterMap = [
       component: Movie,
       meta: { title: '电影详情 - 午安影视' }
     }]
+  },
+  {
+    path: '/callback',
+    component: Callback
   },
   {
     path: '/share',
