@@ -17,6 +17,9 @@ service.interceptors.request.use(config => {
   if (store.getters.user.accessToken) {
     config.headers['Access-Token'] = store.getters.user.accessToken
   }
+  if (store.getters.user.idToken) {
+    config.headers['ID-Token'] = store.getters.user.idToken
+  }
   return config
 }, error => {
   Promise.reject(error)
