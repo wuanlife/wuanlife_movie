@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { addMovieResources } from '../../api/movies'
+import { addMovieResources } from '../../../api/movies'
 
 export default {
   name: 'ShareResources',
@@ -70,9 +70,7 @@ export default {
       showPassword: false
     }
   },
-  mounted () {
-    console.log(this.movieId)
-  },
+  mounted () {},
   methods: {
     submit: function () {
       if (this.typeReady && this.urlReady && this.titelReady) {
@@ -144,7 +142,7 @@ export default {
       } else if (this.form.type === '电驴') {
         let a = this.form.url.indexOf('ed2k')
         if (a !== 0) {
-          this.urlPrompt = '磁力链接必须以 ed2k 开头'
+          this.urlPrompt = '电驴链接必须以 ed2k 开头'
           this.check.url = true
           this.urlReady = false
           return false
@@ -258,5 +256,6 @@ export default {
   border-radius: 4px;
   margin-top: 32px;
   margin-left: 65px;
+  cursor: pointer;
 }
 </style>
