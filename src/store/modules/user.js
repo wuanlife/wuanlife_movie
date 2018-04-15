@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { login, signup } from 'api/auth'
+import { getUserInfo } from 'api/auth'
 import { putUser } from 'api/user'
 // import { storeWithExpiration } from 'utils'
 
@@ -27,8 +27,8 @@ const user = {
 
   actions: {
     // 邮箱登录
-    async Login ({ commit }, params) {
-      const userWithToken = await login(params)
+    async auth ({ commit }, params) {
+      const userWithToken = await getUserInfo(params)
       commit('SET_USER', userWithToken)
       // storeWithExpiration.set('user', userWithToken)
       return userWithToken
@@ -37,13 +37,6 @@ const user = {
     Logout ({ commit }) {
       commit('CLEAR_USER')
       // storeWithExpiration.set('user', {})
-    },
-    // 注册
-    async Signup ({ commit }, params) {
-      const userWithToken = await signup(params)
-      commit('SET_USER', userWithToken)
-      // storeWithExpiration.set('user', userWithToken)
-      return userWithToken
     },
     async PutUser ({ commit, state }, params) {
       const backMessage = await putUser(params)
