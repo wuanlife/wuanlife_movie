@@ -50,7 +50,6 @@ export default {
   mounted () {
     this.movieDetailLoading = true
     this.resourcesLoading = true
-    this.movieId = this.$route.params.id
     getMovie(this.$route.params.id)
       .then(response => this.setFetchMovieData(response))
       .catch(e => {
@@ -63,15 +62,17 @@ export default {
         console.log(e)
         this.resourcesLoading = false
       })
+    this.movieId = this.$route.params.id
   },
   methods: {
     setFetchResourcesData (res) {
-      console.log(res)
+      console.log(res.resources)
       const { resources } = res
-      const { id } = this.movieData
+      // const { id } = this.movieData
+      const self = this
       resources.map(item => {
         item.create_at = parseTime(item.create_at)
-        item.mid = id
+        item.mid = self.movieId
       })
       this.resources = resources
       this.resourcesLoading = false

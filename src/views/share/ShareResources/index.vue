@@ -46,7 +46,7 @@ import { addMovieResources } from '../../../api/movies'
 
 export default {
   name: 'ShareResources',
-  props: ['movieId'],
+  props: ['movieId', 'resourcesData'],
   data () {
     return {
       form: {
@@ -70,7 +70,22 @@ export default {
       showPassword: false
     }
   },
-  mounted () {},
+  mounted () {
+    console.log(this.$store.state.movies.types)
+    if (this.$route.query.resourcesData) {
+      const {title, type, url, instruction, password} = this.$route.query.resourcesData
+      this.form.title = title
+      this.form.url = url
+      this.form.instruction = instruction || ''
+      this.form.password = password || ''
+      this.form.type = this.$store.state.movies.types[type - 1].type_name
+      this.typeReady = true
+      this.urlReady = true
+      this.titelReady = true
+      this.passwordReady = password || false
+      this.instructionReady = instruction || false
+    }
+  },
   methods: {
     submit: function () {
       if (this.typeReady && this.urlReady && this.titelReady) {

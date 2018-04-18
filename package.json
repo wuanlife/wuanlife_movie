@@ -26,7 +26,8 @@
     "vue-router": "^3.0.1",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.13",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "7.1.1",

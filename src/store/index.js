@@ -5,19 +5,20 @@ import movies from './modules/movies'
 // import permission from './modules/permission';
 import getters from './getters'
 // import { createLSPlugin } from '@/utils/plugin'
-import ls from '@/utils/localStorage'
+// import ls from '@/utils/localStorage'
+import createPersistedState from 'vuex-persistedstate' // vuex插件
 
-const LS_KEY = 'user' // localStorage key
-const lsData = ls.getItem(LS_KEY) // 获取本地数据
+// const LS_KEY = 'user' // localStorage key
+// const lsData = ls.getItem(LS_KEY) // 获取本地数据
 // const mapping = {
 //   user: ['id', 'name', 'mail', 'Access-Token'], // 需要保存的键名
 //   movies: ['types']
 // }
 // const mWhiteList = [] // mutation 白名单
 
-if (lsData) {
-  Object.assign(user, { state: lsData.val }) // 将本地数据恢复到 state
-}
+// if (lsData) {
+//   Object.assign(user, { state: lsData.val }) // 将本地数据恢复到 state
+// }
 
 Vue.use(Vuex)
 
@@ -28,8 +29,9 @@ const store = new Vuex.Store({
     user,
     movies
   },
-  getters
+  getters,
   // plugins: [plugin]
+  plugins: [createPersistedState()]
 })
 
 export default store
