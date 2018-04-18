@@ -63,3 +63,16 @@ export function addMovieResources (id, params) {
     data
   })
 }
+export function getSearchMovies (q, offset, limit) {
+  const data = {
+    q,
+    offset,
+    limit
+  }
+  // &offset=${offset}&limit=${limit}
+  return fetch({
+    url: `/movies/search?q=${q}`,
+    data: data,
+    method: 'post'
+  })
+}
