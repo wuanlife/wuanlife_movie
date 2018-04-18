@@ -76,3 +76,15 @@ export function addMovieResources (id, params) {
     data
   })
 }
+
+// 更新资源
+export function updateMovieResources (mid, rid, params) {
+  const data = {
+    ...params
+  }
+  return fetch({
+    url: `/movies/${mid}/resources/${rid}`,
+    method: 'put',
+    data
+  })
+}
