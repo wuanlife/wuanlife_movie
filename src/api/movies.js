@@ -37,18 +37,19 @@ export function postMovies (type, url) {
 }
 
 // 搜索电影
-export function getSearchMovies ({q = '', offset = 0, limit = 20}) {
+export function getSearchMovies (q, offset, limit) {
+  const data = {
+    q,
+    offset,
+    limit
+  }
+  // &offset=${offset}&limit=${limit}
   return fetch({
-    url: `/movies/search`,
-    method: 'post',
-    data: {
-      q,
-      offset,
-      limit
-    }
+    url: `/movies/search?q=${q}`,
+    data: data,
+    method: 'post'
   })
 }
-
 // 获取电影资源列表
 export function getMovieResources (id) {
   return fetch({

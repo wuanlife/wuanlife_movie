@@ -2,9 +2,9 @@
   <div class="index-container view-container">
     <section>
       <ribbon-card :title="`搜索结果`">
-        <div v-loading='loading' >
-          <movie-brief-item :movies="movies">
-          </movie-brief-item>
+        <div>
+          <movie-brief-list :movies="movies">
+          </movie-brief-list>
         </div>
         <el-pagination
           v-if="total > 20"
@@ -21,25 +21,36 @@
 
 <script>
 import { getSearchMovies } from 'api/movies'
-
 export default {
   name: 'index',
   data () {
     return {
       movies: [],
-      total: null,
-      pagination: {
-        limit: 20,
-        offset: 0
-      }
+      total: null
     }
   },
   mounted () {
-    getSearchMovies({q: this.$route.query.search, limit: this.limit, offset: this.offset}).then(({total, movies}) => {
-      debugger
-      this.total = total
-      this.movies = movies
-    })
+    this.SearchMovies()
+  },
+  methods: {
+    SearchMovies (offset) {
+      // var self = this
+      return new Promise((resolve, reject) => {
+        getSearchMovies(
+          this.$route.query.search// ,
+          // offset - 1 || 0,
+          // self.pagination.limit
+        )
+          .then(res => {
+            this.total = res.total
+            this.movies = res.movies
+            resolve()
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    }
   }
 }
 </script>
