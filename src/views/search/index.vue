@@ -50,7 +50,7 @@ export default {
             reject(error)
           })
       })
-    }
+    }      
   }
 }
 </script>

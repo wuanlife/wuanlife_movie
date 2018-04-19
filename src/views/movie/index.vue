@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import MovieDatail from 'components/MovieDetail'
-import MovieIntroduction from 'components/MovieIntroduction'
-import Planet from 'components/Planet'
-import RelatedResources from 'components/RelatedResources'
+import MovieDatail from './MovieDetail'
+import MovieIntroduction from './MovieIntroduction'
+import Planet from './Planet'
+import RelatedResources from './RelatedResources'
 import { getMovie, getMovieResources } from 'api/movies'
 import { parseTime } from '../../filters'
 
@@ -66,6 +66,7 @@ export default {
   },
   methods: {
     setFetchResourcesData (res) {
+      console.log(res)
       const { resources } = res
       const { id } = this.movieData
       resources.map(item => {

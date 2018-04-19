@@ -1,8 +1,9 @@
 <template>
   <div class="nav-user">
     <div class="nav-user-logined">
-      <router-link to="" tag="span" class="nav-user-find">发现影视</router-link>
+      <router-link to="/find" tag="span" class="nav-user-find">发现影视</router-link>
       <div>
+        <span @click="gotoAuth">登录、注册</span>
         <span @click="show()">
           淘淘<icon-svg icon-class="triangle1" class="nav-user-triangle"></icon-svg>
         </span>
@@ -23,6 +24,10 @@ export default {
   methods: {
     show () {
       this.isShow = !this.isShow
+    },
+    gotoAuth () {
+      debugger
+      window.location = `${process.env.SSO_SITE}/authorize?client_id=wuan&redirect_uri=${window.location.origin + '/callback'}&response_type=code&state=maye&nonce=random `
     }
   }
 }

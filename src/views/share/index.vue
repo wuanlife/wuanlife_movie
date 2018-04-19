@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ShareResources from '../../components/ShareResources'
+import ShareResources from './ShareResources'
 
 export default {
   name: 'Share',
