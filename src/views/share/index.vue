@@ -2,6 +2,7 @@
   <div class="view-container share">
     <share-resources
       :movieId="movieId"
+      :resourcesData="resourcesData"
     ></share-resources>
   </div>
 </template>
@@ -16,11 +17,13 @@ export default {
   },
   data () {
     return {
-      movieId: null
+      movieId: null,
+      resourcesData: null
     }
   },
   mounted () {
     this.movieId = this.$route.params.id
+    this.resourcesData = this.$route.query.resourcesData
   }
 }
 </script>

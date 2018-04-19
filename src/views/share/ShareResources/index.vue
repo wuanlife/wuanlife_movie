@@ -42,11 +42,11 @@
 </template>
 
 <script>
-import { addMovieResources } from '../../../api/movies'
+import { addMovieResources, updateMovieResources } from '../../../api/movies'
 
 export default {
   name: 'ShareResources',
-  props: ['movieId'],
+  props: ['movieId', 'resourcesData'],
   data () {
     return {
       form: {
@@ -70,20 +70,47 @@ export default {
       showPassword: false
     }
   },
-  mounted () {},
+  mounted () {
+    if (this.$route.query.resourcesData) {
+      const {title, type, url, instruction, password} = this.$route.query.resourcesData
+      this.form.title = title
+      this.form.url = url
+      this.form.instruction = instruction || ''
+      this.form.password = password || ''
+      this.form.type = type || ''
+      this.typeReady = true
+      this.urlReady = true
+      this.titelReady = true
+      this.passwordReady = password || false
+      this.instructionReady = instruction || false
+      this.showPassword = type === '网盘' || false
+    }
+  },
   methods: {
     submit: function () {
       if (this.typeReady && this.urlReady && this.titelReady) {
         if (this.form.title !== '' && this.form.url !== '' && this.form.type !== '') {
-          addMovieResources(this.movieId, this.form)
-            .then(res => {
-              this.$notify({
-                title: '分享成功',
-                message: '分享资源成功！',
-                type: 'success'
+          if (this.$route.query.resourcesData) {
+            updateMovieResources(this.movieId, this.$route.query.rid, this.form)
+              .then(res => {
+                this.$notify({
+                  title: '更新成功',
+                  message: '更新资源成功！',
+                  type: 'success'
+                })
               })
-            })
-            .catch(err => console.log(err))
+              .catch(err => console.log(err))
+          } else {
+            addMovieResources(this.movieId, this.form)
+              .then(res => {
+                this.$notify({
+                  title: '分享成功',
+                  message: '分享资源成功！',
+                  type: 'success'
+                })
+              })
+              .catch(err => console.log(err))
+          }
         } else {
           this.$notify({
             title: '分享失败',

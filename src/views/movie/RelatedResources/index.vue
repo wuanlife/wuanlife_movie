@@ -4,14 +4,16 @@
     <div>
       <router-link :to="{ path: `/share/${movieId}` }" class="share">+分享资源</router-link>
       <ul>
-        <li v-for="item in data" :key="item.id">
+        <li v-for="(item, index) in data" :key="item.id">
           <header :title="item.title"><a :href="item.url">{{ item.title }}</a></header>
           <p>说明：{{ item.instruction }}</p>
           <footer>
             <span>分享者：{{ item.sharer.name }}</span>
             <time>{{ item.create_at }}</time>
             <div>
-              <span>编辑</span>
+              <span
+                @click="editResources(item.mid, item.id, index)"
+              >编辑</span>
               <span
                 @click="deleteResources(item.mid, item.id)"
               >删除</span>
@@ -54,6 +56,15 @@ export default {
           this.data = this.data.filter(item => item.id !== rid)
         })
         .catch(e => console.log(e))
+    },
+    editResources (mid, rid, index) {
+      this.$router.push({
+        path: `/share/${mid}`,
+        query: {
+          resourcesData: this.data[index],
+          rid: rid
+        }
+      })
     }
   }
 }
