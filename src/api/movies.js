@@ -45,7 +45,7 @@ export function getSearchMovies (q, offset, limit) {
   }
   // &offset=${offset}&limit=${limit}
   return fetch({
-    url: `/movies/search?q=${q}`,
+    url: `/movies/search`,
     data: data,
     method: 'post'
   })
