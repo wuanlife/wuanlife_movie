@@ -2,7 +2,7 @@
   <div class="card-default movie-detail">
     <header>{{ movieData.title }}</header>
     <div>
-      <img src="" alt="">
+      <img :src="movieData.poster_url" :alt="movieData.original_title" :title="movieData.original_title">
       <ul class="detail">
         <li><span>原名：</span>{{ movieData.original_title }}</li>
         <li><span>地区：</span>{{ movieData.countries }}</li>
