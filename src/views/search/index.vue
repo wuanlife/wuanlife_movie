@@ -2,7 +2,10 @@
   <div class="index-container view-container">
     <section>
       <ribbon-card :title="`搜索结果`">
-        <div>
+        <div v-show="pagination.total===0" :style="{textAlign: 'center'}">
+          <h4>没有找到相关的影视资源</h4>
+        </div>
+        <div v-show="pagination.total!==0">
           <movie-brief-list :movies="movies">
           </movie-brief-list>
         </div>
