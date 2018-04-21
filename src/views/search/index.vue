@@ -7,12 +7,13 @@
           </movie-brief-list>
         </div>
         <el-pagination
-          v-if="total > 20"
+          v-if="pagination.total > pagination.limit"
           :style="{textAlign: 'center'}"
           background
+          @current-change="pageChange"
           layout="prev, pager, next"
-          :page-size="20"
-          :total="total">
+          :page-size="pagination.limit"
+          :total="pagination.total">
         </el-pagination>
       </ribbon-card>
     </section>
@@ -26,21 +27,23 @@ export default {
   data () {
     return {
       movies: [],
-      total: null
+      query: '',
+      pagination: {
+        limit: 20,
+        offset: 0,
+        total: 0
+      }
     }
   },
   mounted () {
-    this.SearchMovies()
+    this.query = this.$route.query.search
+    this.searchMovies(this.$route.query.search, this.pagination.offset, this.pagination.limit)
   },
   methods: {
     SearchMovies (offset) {
       // var self = this
       return new Promise((resolve, reject) => {
-        getSearchMovies(
-          this.$route.query.search// ,
-          // offset - 1 || 0,
-          // self.pagination.limit
-        )
+        getSearchMovies(this.$route.query.search, offset)
           .then(res => {
             this.total = res.total
             this.movies = res.movies
@@ -50,6 +53,16 @@ export default {
             reject(error)
           })
       })
+    },
+    searchMovies (query, page, limit) {
+      getSearchMovies(query, page, limit)
+        .then(res => {
+          this.pagination.total = res.total
+          this.movies = res.movies
+        })
+    },
+    pageChange (page) {
+      this.searchMovies(this.query, page - 1, this.pagination.limit)
     }
   }
 }

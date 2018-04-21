@@ -10,7 +10,7 @@
         </div>
         <div class="form-item">
            <span>豆瓣链接：</span>
-            <el-input v-model="url" class="movieURL"  placeholder="https://movie.douban.com/subject/xxxxxx/"></el-input>
+            <el-input v-model="url" class="movie-url"  placeholder="https://movie.douban.com/subject/xxxxxx/"></el-input>
         </div>
 
         <div class="form-item">
@@ -64,7 +64,6 @@ export default {
 .index-container {
   margin-top: 70px;
   section {
-    // width: 745px;
      .form-item{
       display: flex;
       min-height: 45px;
@@ -84,18 +83,6 @@ export default {
           font-weight: bold;
           color: #434343;
       }
-      // &>.movieURL{
-      //     height: 32px;
-      //     width: 393px;
-      //     color: #434343;
-      //     background-color: rgba(209, 209, 209, 0.3);
-      //     border-radius: 4px;
-      //     border: solid 2px rgba(209, 209, 209, 0.3);
-      //     padding: 0 16px;
-      // }
-      &>input:focus{
-          background-color:#fff;
-      }
       &>.submit{
           font-size: 14px;
           color: #fff;
@@ -112,4 +99,40 @@ export default {
     }
   }
 }
+</style>
+
+<style lang="scss">
+    .find {
+      .movie-url{
+        width: 393px;
+        &>input{
+          color: #444444;
+          background-color: rgba(209, 209, 209, 0.3);
+          border-radius: 4px;
+          border: solid 2px rgba(209, 209, 209, 0.3);
+          padding: 0 16px;
+        }
+        &>input:focus{
+          color:#444444;
+          background-color: rgba(209, 209, 209, 0);
+        }
+      }
+      .radio{
+        & .el-radio__input.is-checked .el-radio__inner{
+          background: #ffffff;
+          border-color:#f32941;
+        }
+         & .el-radio__inner:hover{
+          border-color:#ff5f3b;
+        }
+        & .el-radio__inner:after{
+          background-color: #f32941;
+          width: 8px;
+          height: 8px;
+        }
+        & .el-radio__input.is-checked+.el-radio__label {
+          color:#444444;
+        }
+    }
+  }
 </style>

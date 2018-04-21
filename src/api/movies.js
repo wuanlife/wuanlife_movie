@@ -45,7 +45,7 @@ export function getSearchMovies (q, offset, limit) {
   }
   // &offset=${offset}&limit=${limit}
   return fetch({
-    url: `/movies/search?q=${q}`,
+    url: `/movies/search`,
     data: data,
     method: 'post'
   })
@@ -74,6 +74,18 @@ export function addMovieResources (id, params) {
   return fetch({
     url: `/movies/${id}/resources`,
     method: 'post',
+    data
+  })
+}
+
+// 更新资源
+export function updateMovieResources (mid, rid, params) {
+  const data = {
+    ...params
+  }
+  return fetch({
+    url: `/movies/${mid}/resources/${rid}`,
+    method: 'put',
     data
   })
 }
