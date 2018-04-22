@@ -35,7 +35,7 @@
           <span class="item-lebal">说明：</span>
           <textarea class="textarea" placeholder="选填"  v-model.trim="form.instruction" @change="instructionChange"></textarea>
         </div>
-        <button @click.stop.prevent="submit" class="submit">提交</button>
+        <button @click.stop.prevent="checkLogin" class="submit">提交</button>
       </form>
     </div>
   </div>
@@ -87,6 +87,18 @@ export default {
     }
   },
   methods: {
+    checkLogin: function () {
+      const {accessToken, idToken} = this.$store.getters.user
+      if (accessToken && idToken) {
+        this.submit()
+      } else {
+        this.$notify({
+          title: '操作失败',
+          message: '您没有权限操作！，请先登录',
+          type: 'warning'
+        })
+      }
+    },
     submit: function () {
       if (this.typeReady && this.urlReady && this.titelReady) {
         if (this.form.title !== '' && this.form.url !== '' && this.form.type !== '') {

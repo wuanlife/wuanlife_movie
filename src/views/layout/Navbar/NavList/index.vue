@@ -41,7 +41,7 @@ export default {
     display: flex;
     flex: 1;
     > ul{
-      font-size: 22px;
+      font-size: 20px;
       color: #fff;
       display: flex;
       justify-content: space-around;

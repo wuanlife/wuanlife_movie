@@ -10,7 +10,7 @@
           <footer>
             <span>分享者：{{ item.sharer.name }}</span>
             <time>{{ item.create_at }}</time>
-            <div>
+            <div v-if="item.sharer.name === userName">
               <span
                 @click="editResources(item.mid, item.id, index)"
               >编辑</span>
@@ -41,7 +41,14 @@ export default {
   },
   data () {
     return {
-      data: []
+      data: [],
+      userName: ''
+    }
+  },
+  mounted () {
+    const {accessToken, idToken, userInfo} = this.$store.getters.user
+    if (accessToken && idToken) {
+      this.userName = userInfo.uname
     }
   },
   watch: {
@@ -51,20 +58,38 @@ export default {
   },
   methods: {
     deleteResources (mid, rid) {
-      deleteMovieResources(mid, rid)
-        .then(response => {
-          this.data = this.data.filter(item => item.id !== rid)
+      const {accessToken, idToken} = this.$store.getters.user
+      if (accessToken && idToken) {
+        deleteMovieResources(mid, rid)
+          .then(response => {
+            this.data = this.data.filter(item => item.id !== rid)
+          })
+          .catch(e => console.log(e))
+      } else {
+        this.$notify({
+          title: '操作失败',
+          message: '您没有权限操作！，请先登录',
+          type: 'warning'
         })
-        .catch(e => console.log(e))
+      }
     },
     editResources (mid, rid, index) {
-      this.$router.push({
-        path: `/share/${mid}`,
-        query: {
-          resourcesData: this.data[index],
-          rid: rid
-        }
-      })
+      const {accessToken, idToken} = this.$store.getters.user
+      if (accessToken && idToken) {
+        this.$router.push({
+          path: `/share/${mid}`,
+          query: {
+            resourcesData: this.data[index],
+            rid: rid
+          }
+        })
+      } else {
+        this.$notify({
+          title: '操作失败',
+          message: '您没有权限操作！，请先登录',
+          type: 'warning'
+        })
+      }
     }
   }
 }
