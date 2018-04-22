@@ -10,7 +10,7 @@
           <footer>
             <span>分享者：{{ item.sharer.name }}</span>
             <time>{{ item.create_at }}</time>
-            <div>
+            <div v-if="item.sharer.name === userName">
               <span
                 @click="editResources(item.mid, item.id, index)"
               >编辑</span>
@@ -41,7 +41,14 @@ export default {
   },
   data () {
     return {
-      data: []
+      data: [],
+      userName: ''
+    }
+  },
+  mounted () {
+    const {accessToken, idToken, userInfo} = this.$store.getters.user
+    if (accessToken && idToken) {
+      this.userName = userInfo.uname
     }
   },
   watch: {
