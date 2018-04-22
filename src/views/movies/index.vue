@@ -26,6 +26,7 @@ export default {
     return {
       typeId: parseInt(this.$route.params.typeId),
       movies: [],
+      title: '',
       pagination: {
         limit: 20,
         offset: 0,

@@ -1,13 +1,13 @@
 <template>
   <div class="nav-user">
     <div class="nav-user-logined">
-      <router-link to="/find" tag="span" class="nav-user-find">发现影视</router-link>
+      <router-link v-if="isLogined" to="/find" tag="span" class="nav-user-find">发现影视</router-link>
       <div>
-        <span @click="gotoAuth">登录、注册</span>
-        <span @click="show()">
-          淘淘<icon-svg icon-class="triangle1" class="nav-user-triangle"></icon-svg>
+        <span v-if="!isLogined" @click="gotoAuth">登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册</span>
+        <span v-if="isLogined" @click="show()">
+          {{ name }}<icon-svg icon-class="triangle1" class="nav-user-triangle"></icon-svg>
         </span>
-        <router-link v-if="isShow" to="" tag="span" class="logout">退出登录</router-link>
+        <span @click="logout" v-if="isShow" class="logout">退出登录</span>
       </div>
     </div>
   </div>
@@ -18,7 +18,9 @@ export default {
   name: 'NavUser',
   data () {
     return {
-      isShow: false
+      isLogined: false,
+      isShow: false,
+      name: ''
     }
   },
   methods: {
@@ -26,8 +28,24 @@ export default {
       this.isShow = !this.isShow
     },
     gotoAuth () {
-      debugger
       window.location = `${process.env.SSO_SITE}/authorize?client_id=wuan&redirect_uri=${window.location.origin + '/callback'}&response_type=code&state=maye&nonce=random `
+    },
+    logout () {
+      console.log('commit')
+      this.$store.commit('CLEAR_USER')
+      this.$nextTick(() => {
+        this.isLogined = false
+        this.isShow = false
+        this.name = ''
+      })
+      console.log(this.$store)
+    }
+  },
+  mounted () {
+    console.log(this.$store)
+    if (this.$store.state.user.userInfo) {
+      this.name = this.$store.state.user.userInfo.uname
+      this.isLogined = true
     }
   }
 }
