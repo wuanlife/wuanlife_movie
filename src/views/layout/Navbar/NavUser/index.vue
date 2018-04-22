@@ -26,7 +26,6 @@ export default {
       this.isShow = !this.isShow
     },
     gotoAuth () {
-      debugger
       window.location = `${process.env.SSO_SITE}/authorize?client_id=wuan&redirect_uri=${window.location.origin + '/callback'}&response_type=code&state=maye&nonce=random `
     }
   }

@@ -1,8 +1,6 @@
 module.exports = {
     NODE_ENV: '"production"',
-    BASE_API: '"//52.78.119.221:800/"',
-    APP_ORIGIN: '"http://wuanlife.com"',
+    BASE_API: '"http://52.78.119.221:802/api/"',
     SSO_SITE: '"http://52.78.119.221:81"',
-    // 七牛域名
-    QINIU_DOMAIN_URL: '"http://7xlx4u.com1.z0.glb.clouddn.com/"'
+    APP_ORIGIN: '"http://wuanlife.com"',
 }
