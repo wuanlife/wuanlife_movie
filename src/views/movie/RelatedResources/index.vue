@@ -5,7 +5,7 @@
       <router-link :to="{ path: `/share/${movieId}` }" class="share">+分享资源</router-link>
       <ul>
         <li v-for="(item, index) in data" :key="item.id">
-          <header :title="item.title"><a :href="item.url">{{ item.title }}</a></header>
+          <header :title="item.title"><a :href="item.url">【{{ item.type }}】{{ item.title }}</a></header>
           <p>说明：{{ item.instruction }}</p>
           <footer>
             <span>分享者：{{ item.sharer.name }}</span>
