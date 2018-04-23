@@ -16,7 +16,7 @@
         :movieId="movieId"
       ></related-resources>
     </div>
-    <div class="aside">
+    <div v-if="false" class="aside">
       <planet></planet>
     </div>
   </div>
