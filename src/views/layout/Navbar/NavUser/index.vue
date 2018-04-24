@@ -34,7 +34,6 @@ export default {
     logout () {
       console.log('commit')
       logout().then(res => {
-        debugger
         this.$store.commit('CLEAR_USER')
         this.$nextTick(() => {
           this.isLogined = false
