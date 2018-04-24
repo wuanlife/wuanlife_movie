@@ -6,7 +6,7 @@
     <div class="brief">
       <header>
         <h1 @click="jumpMovie">【电影】{{movie.title}}</h1>
-        <span>豆瓣得分：<strong class="score">{{movie.rating}}</strong></span>
+        <span>豆瓣得分：<strong class="score">{{movie.rating | integerToDecimal}}</strong></span>
       </header>
       <p class="intro">{{movie.digest}}</p>
     </div>
@@ -29,6 +29,11 @@ export default {
   methods: {
     jumpMovie () {
       this.$router.push({ path: `/movie/${this.movie.id}` })
+    }
+  },
+  filters: {
+    integerToDecimal (value) {
+      return value % parseInt(value) > 0 ? value : `${value}.0`
     }
   }
 }
