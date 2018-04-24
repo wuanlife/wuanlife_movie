@@ -15,7 +15,7 @@
       </ul>
       <div class="score">
         <div class="number">
-          <span>{{ movieData.rating }}</span>
+          <span>{{ movieData.rating | integerToDecimal }}</span>
           <icon-svg icon-class="liuamngxing" class="icon"></icon-svg>
         </div>
         <span>豆瓣评分</span>
@@ -46,6 +46,9 @@ export default {
     urlToNumber (value) {
       let a = value.split('/')
       return a[a.length - 2]
+    },
+    integerToDecimal (value) {
+      return value % parseInt(value) > 0 ? value : `${value}.0`
     }
   }
 }

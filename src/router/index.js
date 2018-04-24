@@ -25,8 +25,8 @@ Vue.use(Router)
 
 export const constantRouterMap = [
   /* { path: '/authredirect', component: authRedirect, hidden: true }, */
-  { path: '/404', component: Err404, hidden: true, meta: { title: '404错误 - 午安网 - 过你想过的生活' } },
-  { path: '/401', component: Err401, hidden: true, meta: { title: '401错误 - 午安网 - 过你想过的生活' } },
+  { path: '/404', component: Err404, hidden: true, meta: { title: '404错误 - 午安影视' } },
+  { path: '/401', component: Err401, hidden: true, meta: { title: '401错误 - 午安影视' } },
   {
     path: '/',
     component: Layout,
@@ -35,11 +35,11 @@ export const constantRouterMap = [
     children: [{
       path: '/timeline/:typeId',
       component: Movies,
-      meta: { title: '午安网 - 过你想过的生活' }
+      meta: { title: '午安影视' }
     }, {
       path: '/timeline',
       component: Movies,
-      meta: { title: '午安网 - 过你想过的生活' }
+      meta: { title: '午安影视' }
     }]
   },
   {

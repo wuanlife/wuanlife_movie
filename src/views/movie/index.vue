@@ -79,6 +79,7 @@ export default {
     },
     setFetchMovieData (res) {
       this.movieData = res
+      document.title = `${res.title} - 午安影视`
       this.movieDetailLoading = false
     }
   }
