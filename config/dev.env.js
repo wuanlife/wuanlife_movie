@@ -1,7 +1,7 @@
 module.exports = {
     NODE_ENV: '"development"',
     BASE_API: '"http://52.78.119.221:802/api/"',
-    SSO_SITE: '"http://52.78.119.221:81"',
+    SSO_SITE: '"http://52.78.119.221:801"',
     API_MOCK: false,
     APP_ORIGIN: '"www.baidu.com"',
     // 七牛域名

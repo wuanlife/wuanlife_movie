@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { logout } from 'api/user'
 export default {
   name: 'NavUser',
   data () {
@@ -32,13 +33,16 @@ export default {
     },
     logout () {
       console.log('commit')
-      this.$store.commit('CLEAR_USER')
-      this.$nextTick(() => {
-        this.isLogined = false
-        this.isShow = false
-        this.name = ''
+      logout().then(res => {
+        debugger
+        this.$store.commit('CLEAR_USER')
+        this.$nextTick(() => {
+          this.isLogined = false
+          this.isShow = false
+          this.name = ''
+        })
+        console.log(this.$store)
       })
-      console.log(this.$store)
     }
   },
   mounted () {
