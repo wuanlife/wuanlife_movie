@@ -57,6 +57,7 @@ export function changePassword (params) {
 export function logout (params) {
   return fetch({
     url: `${process.env.SSO_SITE}/api/users/logout`,
-    method: 'post'
+    method: 'post',
+    withCredentials: true
   })
 }
