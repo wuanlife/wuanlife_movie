@@ -42,6 +42,7 @@ service.interceptors.response.use(
         message: error.message,
         offset: 60
       })
+      return Promise.reject(error.response)
     } else if (error.response.status === 401) {
       MessageBox.confirm('登录状态过期或未登录，可以取消继续留在该页面，或者重新登录', '确定登出', {
         confirmButtonText: '重新登录',
@@ -53,13 +54,13 @@ service.interceptors.response.use(
         })
       })
       return Promise.reject(error)
+    } else {
+      Notification({
+        message: error.response.data.error,
+        offset: 60
+      })
+      return Promise.reject(error)
     }
-    /* Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    }); */
-    return Promise.reject(error.response)
   }
 )
 
