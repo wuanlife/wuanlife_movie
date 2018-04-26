@@ -1,10 +1,9 @@
 <template>
-  <div class="movie-introduction card-default">
-    <header>剧情简介</header>
-    <div>
+  <ribbon-card title="剧情简介">
+    <p>
       {{ movieData.summary }}
-    </div>
-  </div>
+    </p>
+  </ribbon-card>
 </template>
 
 <script>

@@ -1,7 +1,6 @@
 <template>
-  <div class="card-default movie-detail">
-    <header>{{ movieData.title }}</header>
-    <div>
+  <ribbon-card :title="movieData.title">
+    <div class="movie-detail">
       <img :src="movieData.poster_url" :alt="movieData.original_title" :title="movieData.original_title">
       <ul class="detail">
         <li><span>原名：</span>{{ movieData.original_title }}</li>
@@ -21,7 +20,7 @@
         <span>豆瓣评分</span>
       </div>
     </div>
-  </div>
+  </ribbon-card>
 </template>
 
 <script>
@@ -56,74 +55,68 @@ export default {
 
 <style lang="scss" scoped>
 .movie-detail{
-  width: 695px;
-  > header{
-    font-size: 26px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  > img{
+    width: 139px;
+    height: 207px;
+    display: block;
+    background-color: rgb(202, 200, 200);
   }
-  > div{
-    display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    > img{
-      width: 139px;
-      height: 207px;
-      display: block;
-      background-color: rgb(202, 200, 200);
-    }
-    .detail{
-      font-size: 12px;
-      color: #666;
-      width: 263px;
-      margin-left: 40px;
-      > li{
-        margin-bottom: 9px;
-        &:last-child{
-          margin-bottom: 0;
-        }
-        > span{
-          color: #444;
+  .detail{
+    font-size: 12px;
+    color: #666;
+    width: 263px;
+    margin-left: 40px;
+    > li{
+      margin-bottom: 9px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      > span{
+        color: #444;
+        font-weight: bold;
+      }
+      .link{
+        color: #f32941;
+        text-decoration: underline;
+        &:hover{
           font-weight: bold;
         }
-        .link{
-          color: #f32941;
-          text-decoration: underline;
-          &:hover{
-            font-weight: bold;
-          }
-        }
       }
     }
-    .score{
-      text-align: center;
-      padding-top: 11px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      .number{
-        width: 58px;
-        height: 66px;
-        position: relative;
-        margin-bottom: 16px;
-        >span{
-          font-size: 24px;
-          color: #fbe592;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        .icon{
-          width: 70px;
-          height: 70px;
-          color: #f43e54;
-        }
-      }
+  }
+  .score{
+    text-align: center;
+    padding-top: 11px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .number{
+      width: 58px;
+      height: 66px;
+      position: relative;
+      margin-bottom: 16px;
       >span{
-        font-size: 12px;
-        color: #444;
+        font-size: 24px;
+        color: #fbe592;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
+      .icon{
+        width: 70px;
+        height: 70px;
+        color: #f43e54;
+      }
+    }
+    >span{
+      font-size: 12px;
+      color: #444;
     }
   }
 }

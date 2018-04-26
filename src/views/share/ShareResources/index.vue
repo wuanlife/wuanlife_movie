@@ -1,6 +1,5 @@
 <template>
-  <div class="card-default share-resources">
-    <header>分享资源</header>
+  <ribbon-card title="分享资源">
     <div class="form-box">
       <form>
         <div class="form-item">
@@ -38,7 +37,7 @@
         <button @click.stop.prevent="checkLogin" class="submit">提交</button>
       </form>
     </div>
-  </div>
+  </ribbon-card>
 </template>
 
 <script>
@@ -120,6 +119,7 @@ export default {
                   message: '分享资源成功！',
                   type: 'success'
                 })
+                this.$router.go(-1)
               })
               .catch(err => console.log(err))
           }

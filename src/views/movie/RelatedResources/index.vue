@@ -1,7 +1,6 @@
 <template>
-  <div class="card-default related-resources">
-    <header>相关资源</header>
-    <div>
+  <ribbon-card title="相关资源">
+    <div class="related-resources">
       <router-link :to="{ path: `/share/${movieId}` }" class="share">+分享资源</router-link>
       <ul>
         <li v-for="(item, index) in data" :key="item.id">
@@ -22,7 +21,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </ribbon-card>
 </template>
 
 <script>
@@ -97,67 +96,61 @@ export default {
 
 <style lang="scss" scoped>
 .related-resources{
-  width: 695px;
-  > header{
-    font-size: 18px;
-  }
-  > div{
-    position: relative;
-    .share{
-      position: absolute;
-      right: 40px;
-      top: -13px;
-      font-size: 12px;
-      color: #f32941;
-      &:hover{
-        font-weight: bold;
-      }
+  position: relative;
+  .share{
+    position: absolute;
+    right: 40px;
+    top: -13px;
+    font-size: 12px;
+    color: #f32941;
+    &:hover{
+      font-weight: bold;
     }
-    >ul{
-      font-size: 14px;
-      >li{
-        border-bottom: 1px solid #dcdcdc;
-        padding: 15px 0;
-        &:last-child{
-          border-bottom: 0;
+  }
+  >ul{
+    font-size: 14px;
+    >li{
+      border-bottom: 1px solid #dcdcdc;
+      padding: 15px 0;
+      &:last-child{
+        border-bottom: 0;
+      }
+      >header{
+        @include text-ellipsis(100%);
+        color: #444;
+        margin-bottom: 10px;
+        text-decoration: underline;
+        cursor: pointer;
+        &:hover{
+          color: #f32941;
         }
-        >header{
-          @include text-ellipsis(100%);
-          color: #444;
-          margin-bottom: 10px;
-          text-decoration: underline;
-          cursor: pointer;
-          &:hover{
-            color: #f32941;
-          }
-        }
-        >p{
+      }
+      >p{
+        color: #5e5e5e;
+        margin-bottom: 10px;
+      }
+      >footer{
+        display: flex;
+        justify-content: flex-start;
+        >span{
           color: #5e5e5e;
-          margin-bottom: 10px;
         }
-        >footer{
-          display: flex;
-          justify-content: flex-start;
+        >time{
+          color: #999;
+          margin-left: 34px;
+        }
+        >div{
+          flex: 1;
+          text-align: right;
+          font-size: 10px;
+          color: #f32941;
           >span{
-            color: #5e5e5e;
-          }
-          >time{
-            color: #999;
-            margin-left: 34px;
-          }
-          >div{
-            flex: 1;
-            text-align: right;
-            font-size: 10px;
-            color: #f32941;
-            >span{
-              cursor: pointer;
-              &:hover{
-                font-weight: bold;
-              }
-              &:last-child{
-                margin-left: 12px;
-              }
+            cursor: pointer;
+            &:hover{
+              font-weight: bold;
+            }
+            &:last-child{
+              margin-left: 12px;
             }
           }
         }

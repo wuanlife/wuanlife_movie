@@ -50,7 +50,11 @@ export default {
       const type = this.type
       const url = this.url
       postMovies(type, url).then(res => {
+        console.log(res)
         this.$router.push({ path: `/movie/${res.id}` })
+      }, err => {
+        console.log(err)
+        this.$router.push({ path: `/movie/${err.response.data.id}` })
       })
     }
   },
