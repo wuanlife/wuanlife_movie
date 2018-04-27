@@ -109,6 +109,7 @@ export default {
                   message: '更新资源成功！',
                   type: 'success'
                 })
+                this.$router.go(-1)
               })
               .catch(err => console.log(err))
           } else {

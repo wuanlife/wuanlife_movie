@@ -2,7 +2,7 @@
   <ribbon-card title="相关资源">
     <div class="related-resources">
       <router-link :to="{ path: `/share/${movieId}` }" class="share">+分享资源</router-link>
-      <ul>
+      <ul v-if="data.length > 0">
         <li v-for="(item, index) in data" :key="item.id">
           <header :title="item.title"><a :href="item.url">【{{ item.type }}】{{ item.title }}</a></header>
           <p>说明：{{ item.instruction }}</p>
@@ -20,6 +20,7 @@
           </footer>
         </li>
       </ul>
+      <span class="prompt" v-else>资源列表是空的，快去分享资源吧！</span>
     </div>
   </ribbon-card>
 </template>
@@ -106,6 +107,12 @@ export default {
     &:hover{
       font-weight: bold;
     }
+  }
+  >.prompt{
+    color: #aaa;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
   >ul{
     font-size: 14px;

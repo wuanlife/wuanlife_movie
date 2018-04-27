@@ -37,17 +37,23 @@ export default {
   },
   filters: {
     arrToString (value) {
-      const dataArr = value.map(item => {
-        return item.name
-      })
-      return dataArr.join('/')
+      if (value) {
+        const dataArr = value.map(item => {
+          return item.name
+        })
+        return dataArr.join('/')
+      }
     },
     urlToNumber (value) {
-      let a = value.split('/')
-      return a[a.length - 2]
+      if (value) {
+        let a = value.split('/')
+        return a[a.length - 2]
+      }
     },
     integerToDecimal (value) {
-      return value % parseInt(value) > 0 ? value : `${value}.0`
+      if (value) {
+        return value % parseInt(value) > 0 ? value : `${value}.0`
+      }
     }
   }
 }
