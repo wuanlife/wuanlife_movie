@@ -2,6 +2,7 @@
   <el-card class="ribbon-card">
     <div class="ribbon-card-header" slot="header">
       <span>{{title}}</span>
+      <slot name="header"></slot>
     </div>
     <div class="ribbon-card-body">
       <slot>

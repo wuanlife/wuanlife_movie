@@ -1,7 +1,7 @@
 <template>
   <ribbon-card title="相关资源">
+    <router-link slot="header" :to="{ path: `/share/${movieId}` }" tag="span" class="share">+分享资源</router-link>
     <div class="related-resources">
-      <router-link :to="{ path: `/share/${movieId}` }" class="share">+分享资源</router-link>
       <ul v-if="data.length > 0">
         <li v-for="(item, index) in data" :key="item.id">
           <header :title="item.title"><a :href="item.url">【{{ item.type }}】{{ item.title }}</a></header>
@@ -96,6 +96,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.share{
+  font-size: 12px;
+  cursor: pointer;
+  color: #f32941;
+  float: right;
+  &:hover{
+    font-weight: bold;
+  }
+}
 .related-resources{
   position: relative;
   .share{
