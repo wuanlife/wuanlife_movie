@@ -7,6 +7,7 @@
         <span v-if="isLogined" @click="show()">
           {{ name }}<icon-svg icon-class="triangle1" class="nav-user-triangle"></icon-svg>
         </span>
+        <span v-if="isShow" @click="goPData" class="personalData">个人资料</span>
         <span @click="logout" v-if="isShow" class="logout">退出登录</span>
       </div>
     </div>
@@ -30,6 +31,9 @@ export default {
     },
     gotoAuth () {
       window.location = `${process.env.SSO_SITE}/authorize?client_id=wuan&redirect_uri=${window.location.origin + '/callback'}&response_type=code&state=maye&nonce=random `
+    },
+    goPData () {
+      window.location = `${process.env.SSO_SITE}/personal/profile `
     },
     logout () {
       console.log('commit')
@@ -85,10 +89,19 @@ export default {
       }
       .logout{
         position: absolute;
+        top: 82px;
+        width: 100%;
+        font-size: 14px;
+        background-color: rgba(66, 66, 66, 0.2);
+        z-index:9999;
+      }
+      .personalData{
+        position: absolute;
         top: 40px;
         width: 100%;
         font-size: 14px;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(66, 66, 66, 0.2);
+        z-index:9999;
       }
     }
   }
