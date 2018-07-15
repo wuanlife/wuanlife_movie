@@ -39,6 +39,8 @@ export default {
       window.location = `${process.env.SSO_SITE}/personal/profile `
     },
     logout () {
+      this.$cookie.delete('wuan-id-token')
+      this.$cookie.delete('wuan-access-token')
       this.$store.commit('CLEAR_USER')
       this.$nextTick(() => {
         this.isLogined = false
