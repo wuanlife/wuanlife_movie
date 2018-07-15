@@ -3,7 +3,8 @@
     <div class="nav-user-logined">
       <router-link v-if="isLogined" to="/find" tag="span" class="nav-user-find">发现影视</router-link>
       <div>
-        <span v-if="!isLogined" @click="gotoAuth">登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册</span>
+        <span v-if="!isLogined" @click="goLogin" class="login">登录</span>
+        <span v-if="!isLogined" @click="goSigup" class="signup">注册</span>
         <span v-if="isLogined" @click="show()">
           {{ name }}<icon-svg icon-class="triangle1" class="nav-user-triangle"></icon-svg>
         </span>
@@ -29,8 +30,11 @@ export default {
     show () {
       this.isShow = !this.isShow
     },
-    gotoAuth () {
+    goLogin () {
       window.location = `${process.env.SSO_SITE}/authorize?client_id=wuan&redirect_uri=${window.location.origin + '/callback'}&response_type=code&state=maye&nonce=random `
+    },
+    goSigup () {
+      window.location = `${process.env.SSO_SITE}/signup `
     },
     goPData () {
       window.location = `${process.env.SSO_SITE}/personal/profile `
@@ -86,6 +90,15 @@ export default {
         border-radius: 4px;
         display: block;
         line-height: 40px;
+      }
+      .login{
+        width: 20px;
+        display: inline;
+      }
+      .signup{
+        width: 20px;
+        display: inline;
+        margin-left: 20px;
       }
       .logout{
         position: absolute;
