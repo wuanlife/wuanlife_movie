@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { logout } from 'api/user'
 export default {
   name: 'NavUser',
   data () {
