@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { logout } from 'api/user'
 export default {
   name: 'NavUser',
   data () {
@@ -39,13 +40,16 @@ export default {
       window.location = `${process.env.SSO_SITE}/personal/profile `
     },
     logout () {
-      this.$store.commit('CLEAR_USER')
-      this.$nextTick(() => {
-        this.isLogined = false
-        this.isShow = false
-        this.name = ''
+      window.localStorage.clear()
+      logout().then(res => {
+        this.$store.commit('CLEAR_USER')
+        this.$nextTick(() => {
+          this.isLogined = false
+          this.isShow = false
+          this.name = ''
+        })
+        location.reload()
       })
-      location.reload()
     }
   },
   mounted () {
