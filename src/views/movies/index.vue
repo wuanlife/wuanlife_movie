@@ -64,11 +64,19 @@ export default {
       })
     },
     handlePageChange (page) {
-      this.getAndSetMovies({
-        type: this.typeId,
-        limit: this.pagination.limit,
-        offset: page - 1
-      })
+      if (this.typeId > 0) {
+        this.getAndSetMovies({
+          type: this.typeId,
+          limit: this.pagination.limit,
+          offset: page
+        })
+      } else {
+        this.getAndSetMovies({
+          type: '',
+          limit: this.pagination.limit,
+          offset: page
+        })
+      }
     }
   }
 }
