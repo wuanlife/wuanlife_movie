@@ -65,9 +65,9 @@ export default {
     },
     handlePageChange (page) {
       this.getAndSetMovies({
-        type: this.typeId,
+        type: this.typeId > 0 ? this.typeId : '',
         limit: this.pagination.limit,
-        offset: page - 1
+        offset: page
       })
     }
   }
