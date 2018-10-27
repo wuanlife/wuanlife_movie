@@ -5,6 +5,7 @@
       <ul v-if="data.length > 0">
         <li v-for="(item, index) in data" :key="item.id">
           <header :title="item.title"><a :href="item.url">【{{ item.type }}】{{ item.title }}</a></header>
+          <span v-if="item.password">网盘密码：{{ item.password }}</span>
           <p>说明：{{ item.instruction }}</p>
           <footer>
             <span>分享者：{{ item.sharer.name }}</span>
