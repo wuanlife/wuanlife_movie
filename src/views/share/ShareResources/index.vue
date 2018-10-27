@@ -28,7 +28,7 @@
         </div>
         <div v-if="showPassword" class="form-item">
           <span class="item-lebal">密码：</span>
-          <input class="item-input" placeholder="选填"  v-model.trim="form.password" type="password">
+          <input class="item-input" placeholder="选填"  v-model.trim="form.password" type="text">
         </div>
         <div class="form-item form-textarea">
           <span class="item-lebal">说明：</span>
