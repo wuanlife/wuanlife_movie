@@ -5,7 +5,7 @@
     </div>
     <div class="brief">
       <header>
-        <h1 @click="jumpMovie">【电影】{{movie.title}}</h1>
+        <h1 @click="jumpMovie">【{{movie.type_name}}】{{movie.title}}</h1>
         <span>豆瓣得分：<strong class="score">{{movie.rating | integerToDecimal}}</strong></span>
       </header>
       <p class="intro">{{movie.digest}}</p>
