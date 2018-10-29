@@ -1,5 +1,5 @@
 <template>
-  <div class="index-container view-container">
+  <div ref="body" class="index-container view-container">
     <section>
       <ribbon-card :title="`最新${this.title}`">
         <movie-brief-list :movies="movies"></movie-brief-list>
@@ -61,6 +61,9 @@ export default {
       getMovies(query).then(res => {
         this.pagination.total = res.total
         this.movies = res.movies
+        this.$nextTick(() => {
+          this.$refs.body.scrollIntoView()
+        })
       })
     },
     handlePageChange (page) {
