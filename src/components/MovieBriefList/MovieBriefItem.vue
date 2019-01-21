@@ -44,7 +44,7 @@ li.movie-brief-item {
   display: flex;
   font-size: 12px;
   color: #444444;
-  padding: 24px 0;
+  padding: 24px 15px;
   &:not(:last-child) {
     border-bottom: 1px solid #dcdcdc;
   }
@@ -66,28 +66,31 @@ li.movie-brief-item {
   .brief {
     flex: 1;
     header {
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       h1 {
         display: inline-block;
         position: relative;
         font-size: 14px;
         font-weight: 600;
         color: #333333;
-        transition: all 0.6s ease-in-out;
+        text-decoration: underline;
+        transition: all 0.4s ease-in-out;
         &::after {
             content: '';
-            transition: all 0.5s ease-in-out;
+            transition: all 0.4s ease-in-out;
             transform: scaleX(0);
             position: absolute;
             width: 100%;
             height: 2px;
             bottom: 0;
             left: 0;
-            background: #333333;
+            background: transparent;
           }
         &:hover {
+          color: #f32941;
           cursor: pointer;
           &::after {
+            background: #f32941;
             transform: scaleX(1);
           }
         }
@@ -105,6 +108,7 @@ li.movie-brief-item {
       max-height: 96px;
       overflow: hidden;
       word-break: break-all;
+      line-height: 1.5;
     }
   }
 }

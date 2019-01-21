@@ -205,7 +205,7 @@ export default {
 <style lang="scss" scoped>
 .form-box {
   padding: 35px 0 35px 91px;
-  width: 745px;
+  width: 1000px;
 }
 .item-lebal {
   font-size: 14px;

@@ -29,6 +29,7 @@ export default {
 .ribbon-card {
   background-color: #ffffff;
   border-radius: 4px;
+  line-height: 1.5;
   /deep/ .el-card__header {
     padding: 0;
     border-bottom: none;
@@ -38,8 +39,7 @@ export default {
     margin-top: 36px;
     padding: 0 29px;
     font-size: 18px;
-    font-weight: 500;
-    color: #333333;
+    font-weight: 600;
     &::before {
       content: '';
       height: 100%;

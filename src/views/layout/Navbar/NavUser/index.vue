@@ -1,7 +1,7 @@
 <template>
   <div class="nav-user">
     <div class="nav-user-logined">
-      <router-link v-if="isLogined" to="/find" tag="span" class="nav-user-find">发现影视</router-link>
+      <!-- <router-link v-if="isLogined" to="/find" tag="span" class="nav-user-find">添加影视</router-link> -->
       <div>
         <span v-if="!isLogined" @click="goLogin" class="login">登录</span>
         <span v-if="!isLogined" @click="goSigup" class="signup">注册</span>
@@ -64,21 +64,21 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .nav-user{
-  padding-top: 11px;
+  padding-top: 19px;
   .nav-user-logined{
     display: flex;
     justify-content: flex-start;
     height: 40px;
-    .nav-user-find{
-      background-color: rgba(255, 255, 255, 0.2);
-      text-align: center;
-      border-radius: 4px;
-      color: #fff;
-      font-size: 18px;
-      width: 90px;
-      line-height: 40px;
-      cursor: pointer;
-    }
+    // .nav-user-find{
+    //   background-color: rgba(255, 255, 255, 0.2);
+    //   text-align: center;
+    //   border-radius: 4px;
+    //   color: #fff;
+    //   font-size: 18px;
+    //   width: 90px;
+    //   line-height: 40px;
+    //   cursor: pointer;
+    // }
     >div{
       position: relative;
       text-align: center;
