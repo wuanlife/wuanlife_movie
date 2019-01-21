@@ -134,7 +134,7 @@ export default {
       }
       >header{
         @include text-ellipsis(100%);
-        color: #444;
+        color: #666;
         margin-bottom: 10px;
         text-decoration: underline;
         cursor: pointer;
@@ -143,14 +143,14 @@ export default {
         }
       }
       >p{
-        color: #5e5e5e;
-        margin-bottom: 10px;
+        color: #666;
+        margin-bottom: 5px;
       }
       >footer{
         display: flex;
         justify-content: flex-start;
         >span{
-          color: #5e5e5e;
+          color: #666;
         }
         >time{
           color: #999;

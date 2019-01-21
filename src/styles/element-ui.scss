@@ -60,3 +60,20 @@
     }
   }
 }
+
+
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev, 
+.el-pagination.is-background .el-pager li:not(.disabled){
+  background-color: transparent;
+  &.active {
+    color: #fff;
+    background-color: #f32941;
+    &:hover{
+      color: #fff;
+    }
+  }
+  &:hover{
+    color: #f32941;
+  }
+}

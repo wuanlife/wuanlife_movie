@@ -64,6 +64,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
+  color: #666;
   > img{
     width: 139px;
     height: 207px;
@@ -75,13 +76,14 @@ export default {
     color: #666;
     width: 263px;
     margin-left: 40px;
+    margin-right: 120px;
+    line-height: 1.2;
     > li{
       margin-bottom: 9px;
       &:last-child{
         margin-bottom: 0;
       }
       > span{
-        color: #444;
         font-weight: bold;
       }
       .link{
@@ -95,24 +97,29 @@ export default {
   }
   .score{
     text-align: center;
-    padding-top: 11px;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    border-left:1px solid #dcdcdc;
+    min-width: 330px;
+    padding-top: 30px;
     .number{
       width: 58px;
       height: 66px;
       position: relative;
       margin-bottom: 16px;
       >span{
-        font-size: 24px;
+        font-size: 18px;
         color: #fbe592;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        &:first-letter{
+          font-size: 30px;
+        }
       }
       .icon{
         width: 70px;
@@ -122,7 +129,7 @@ export default {
     }
     >span{
       font-size: 12px;
-      color: #444;
+      color: #999999;
     }
   }
 }

@@ -81,7 +81,7 @@ export default {
 .index-container {
   margin-top: 70px;
   section {
-    width: 745px;
+    width: 1000px;
   }
 }
 </style>
